@@ -1,0 +1,46 @@
+<h1>Profile Page</h1>
+
+<button ng-click="profile.logout()" >Logout</button>
+
+
+
+
+<div class="profile-container col-xs-12">
+  <form  class="form-horizontal" id="profile-form" ng-submit="profile.updateProfile()">
+    <div class="form-group">
+      <label for="username" class="col-xs-3 control-label">Email</label>
+
+      <div class="col-xs-9">
+
+        <input placeholder="profile.username" type="email" id="username" name="username" class="form-control" ng-model='profile.username' > {{profile.username}} </input>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="realName" class="col-xs-3 control-label">Full Name</label>
+      <div class="col-xs-9">
+        <input placeholder="profile.realName" type="text" id="realName" name="realName" class="form-control" ng-model='profile.realName' > {{profile.realName}} </input>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="babyName" class="col-xs-3 control-label">Baby's Name</label>
+      <div class="col-xs-9">
+        <input placeholder="profile.babyName" type="text" id="babyName" name="babyName" class="form-control" ng-model='profile.babyName' > {{profile.babyName}} </input>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="babyBirthday" class="col-xs-3 control-label">Baby's Birthday (or expected birthday)</label>
+      <div class="col-xs-9">
+        <input placeholder="profile.babyBirthday" type="date" id="babyBirthday" name="babyBirthday" class="form-control" ng-model='profile.babyBirthday' > {{profile.babyBirthday}} </input>
+      </div>
+    </div>
+    <div class="form-group">
+       <div class="col-xs-offset-3 col-xs-9">
+         <button type="submit" class="btn btn-default">Save Changes</button>
+       </div>
+     </div>
+
+  </form>
+</div>

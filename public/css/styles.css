@@ -1,0 +1,23 @@
+/* styles */
+
+#registerLoginTitle {
+  border-bottom: 1px solid black;
+}
+
+#backToLoginButton {
+  float: right;
+}
+
+#bigLogo  {
+  padding: 10px 10px;
+}
+
+
+#bigLogo img {
+  width: 200px;
+}
+
+
+/*div {
+  border: 1px solid black;
+}*/
