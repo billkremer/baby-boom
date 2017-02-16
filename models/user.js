@@ -41,13 +41,13 @@ exports.findAndComparePassword = function(username, password) {
   });
 };
 
-exports.create = function(username, password) {
+exports.create = function(username, password, fullname, baby_name, baby_birthday) {
   return bcrypt
     .hash(password, SALT_ROUNDS)
     .then(function(hash) {
       return query(
-        "INSERT INTO users (username, password) VALUES ($1, $2) RETURNING *",
-        [ username, hash ]
+        "INSERT INTO users (username, password, user_fullname, user_baby_name, user_baby_birthday) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+        [ username, hash , fullname, baby_name, baby_birthday]
       ).then(function(users) {
         return users[0];
       });
