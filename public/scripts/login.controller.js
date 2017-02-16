@@ -12,7 +12,7 @@ function LoginController($http, $location) {
       username: ctrl.username,
       password: ctrl.password
     }).then(function(response){
-      console.log(response);
+      console.log('LoginController response',response);
       $location.path('/home');
     }, function(error) {
       console.log('error logging in', error);
