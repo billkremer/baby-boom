@@ -6,7 +6,7 @@
 </div>
 
 <div>
-  <form class="form-horizontal col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 well" ng-submit="register.register()">
+  <form class="form-horizontal col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 well" ng-submit="register.register()">
   <div id="registerLoginTitle">
     <p>
       Register  <a  href="/login"><button id="backToLoginButton" class="btn btn-default">back to Login</button></a>
@@ -15,19 +15,41 @@
   </div>
   <br />
     <div class="form-group row">
-      <label class="control-label col-xs-offset-1 col-xs-2">Email:</label>
+      <label class="control-label col-xs-3">Email:</label>
       <div class="col-xs-8">
         <input class="form-control" type="email" ng-model="register.username" required>
       </div>
     </div>
     <div class="form-group row">
-      <label class="control-label col-xs-offset-1 col-xs-2">Password:</label>
+      <label class="control-label  col-xs-3">Password:</label>
       <div class="col-xs-8">
         <input class="form-control" type="password" ng-model="register.password" required>
       </div>
     </div>
 
-    <div class="col-xs-offset-3 col-xs-10">
+    <div class="form-group row">
+      <label class="control-label col-xs-3">Full Name</label>
+      <div class="col-xs-8">
+        <input class="form-control" type="text" ng-model="register.userFullName" required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="control-label col-xs-3">Baby's Name</label>
+      <div class="col-xs-8">
+        <input class="form-control" type="text" ng-model="register.babyName" required>
+      </div>
+
+    </div>
+    <div class="form-group row">
+      <label class="control-label col-xs-3">Baby's Birthday (or expected birthday)</label>
+      <div class="col-xs-8">
+        <input class="form-control" type="date" ng-model="register.babyBirthday" required>
+      </div>
+    </div>
+
+
+
+    <div class="col-xs-offset-3 col-xs-8">
       <button type="submit" class="btn btn-primary" ng-disabled="register.$invalid" >Register</button>
     </div>
   </form>
