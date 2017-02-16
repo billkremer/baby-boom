@@ -10,7 +10,7 @@ angular
         controller: "HomeController as home",
         authRequired: true
       })
-      .when("/profile", {
+      .when("/profilePage", {
         templateUrl: "views/profile.html",
         controller: "ProfileController as profile",
         authRequired: true
