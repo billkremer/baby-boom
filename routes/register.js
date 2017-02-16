@@ -8,7 +8,7 @@ router.post('/', function(req, res){
       return res.status(400).send('Username already taken');
     }
 
-    return User.create(req.body.username, req.body.password).then(function(user){
+    return User.create(req.body.username, req.body.password, req.body.user_fullname, req.body.user_baby_name, req.body.user_baby_birthday).then(function(user){
       console.log('Created new user');
       req.login(user, function(err){
         if (err) {
