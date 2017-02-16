@@ -6,10 +6,13 @@ angular.module('BabyBoomApp').controller('RegisterController', function($http, $
 
     $http.post('/register', {
       username: ctrl.username,
-      password: ctrl.password
+      password: ctrl.password,
+      user_fullname: ctrl.userFullName,
+      user_baby_name: ctrl.babyName,
+      user_baby_birthday: ctrl.babyBirthday
     }).then(function(response){
       console.log(response);
-      $location.path('/profile');
+      $location.path('/home');
     }, function(error) {
       console.log('error registering new user', error);
       ctrl.message = "Error registering new user: "+ error.data;
