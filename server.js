@@ -7,6 +7,7 @@ var passport = require('passport');
 var connection = require('./db/connection');
 var login = require('./routes/login');
 var register = require('./routes/register');
+var profile = require('./routes/profile')
 
 require('./auth/setup');
 
@@ -40,6 +41,9 @@ app.get('/loginStatus', function(req, res){
 
 // the following routes require authentication
 app.use('/private', ensureAuthenticated);
+
+app.use('/profile', profile);
+
 
 app.get('/private/secretInfo', function(req, res){
   console.log('Sending secret info');
