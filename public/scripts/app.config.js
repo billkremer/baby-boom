@@ -15,6 +15,16 @@ angular
         controller: "ProfileController as profile",
         authRequired: true
       })
+      .when("/contactsPage", {
+        templateUrl: "views/contacts.html",
+        controller: "ContactController as contact",
+        authRequired: true
+      })
+      .when("/achievementsPage", {
+        templateUrl: "views/achievements.html",
+        controller: "AchievementsController as achievements",
+        authRequired: true
+      })
       .when("/newUser", {
         templateUrl: "views/register.html",
         controller: "RegisterController as register"
