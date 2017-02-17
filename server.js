@@ -8,6 +8,8 @@ var connection = require('./db/connection');
 var login = require('./routes/login');
 var register = require('./routes/register');
 var profile = require('./routes/profile')
+var babyboomdb = require('./routes/babyboomdb')
+
 
 require('./auth/setup');
 
@@ -43,7 +45,7 @@ app.get('/loginStatus', function(req, res){
 app.use('/private', ensureAuthenticated);
 
 app.use('/profile', profile);
-
+app.use('/bbdb', babyboomdb); // pass through to the babyboomdb.js route
 
 app.get('/private/secretInfo', function(req, res){
   console.log('Sending secret info');
@@ -63,6 +65,13 @@ app.get('/*', function(req, res){
   res.sendFile(path.join(__dirname, 'public/views/index.html'));
 });
 
-var server = app.listen(3000, function() {
-  console.log('Listening on port', server.address().port);
+// var server = app.listen(3000, function() {
+//   console.log('Listening on port', server.address().port);
+//   console.log('Press Control + C to exit');
+// });
+
+var port = process.env.PORT || 3000;
+var server = app.listen(port, function () {
+  console.log('Listening on port ', server.address().port);
+  console.log('Press Control + C to exit');
 });
