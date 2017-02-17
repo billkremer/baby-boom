@@ -5,6 +5,7 @@ var temp = {};
 
 var ctrl = this;
 
+
 ctrl.getProfileData = function () {
   console.log("trying to get data");
   $http.get('/profile').then(function(response) {
@@ -27,11 +28,8 @@ ctrl.getProfileData = function () {
 
 ctrl.getProfileData();
 
-// console.log('this',this);
-
 
 ctrl.updateProfile = function () {
-
   console.log(ctrl);
 
   var objectToSend = {
@@ -40,22 +38,11 @@ ctrl.updateProfile = function () {
     realName: ctrl.realName,
     babyName: ctrl.babyName,
     babyBirthday: ctrl.babyBirthday,
-  }
-
+  };
 
   $http.put('/profile', objectToSend);
 
-
-
-
-
-
-
-
 };
-
-
-
 
 
   ctrl.logout = function() {
