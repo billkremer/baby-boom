@@ -15,6 +15,8 @@
 
 
 
+<br />
+<br />
 
 <!-- pre-filled achievement section  -->
 
@@ -23,15 +25,22 @@
 
 
 
-
-
-
-
   <textarea type="text" id="achText" name="achText" class="form-control" ng-model='individualAchievement.achievement_text' > {{individualAchievement.achievement_text}} </textarea>
 
-  <textarea placeholder = "individualAchievement.achievement_placeholder" type="text" id="achComm" name="achComm" class="form-control" ng-model='individualAchievement.achievementComment' > {{individualAchievement.achievementComment}} </textarea>
+  <textarea placeholder = "{{individualAchievement.achievement_placeholder}}" type="text" id="achComm" name="achComm" class="form-control" ng-model='individualAchievement.achievementComment' > {{individualAchievement.achievementComment}} </textarea>
 
-  <button ng-click="individualAchievement.addAchievement(individualAchievement)"> Save Achievement </button>
+  <button ng-click="achievements.addAchievement(individualAchievement, individualAchievement.achievementComment)"> Save Achievement </button>
 
+
+</div>
+
+
+<div class="favoritedGiphyDiv" ng-repeat="individualGiphy in favGiphy.giphyList">
+  <img ng-src="{{individualGiphy.giphy_url}}" alt=" image from giphy {{individualGiphy.giphy_url}}"/>
+  <textarea  placeholder="Comment Here..." type="text" id="task" name="task" class="form-control" ng-model='individualGiphy.giphy_comment' > {{individualGiphy.giphy_comment}} </textarea>
+
+  <button ng-click="favGiphy.updateFavoriteComment(individualGiphy)"> Update Comment </button>
+
+  <button ng-click="favGiphy.removeGif(individualGiphy)"> Remove Giphy from Favorites </button>
 
 </div>
