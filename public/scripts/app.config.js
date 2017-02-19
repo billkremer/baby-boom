@@ -25,7 +25,7 @@ angular
         controller: "AchievementsController as achievements",
         authRequired: true
       })
-      .when("/completed", {
+      .when("/completedPage", {
         templateUrl: "views/completed.html",
         controller: "CompletedController as completed",
         authRequired: true
