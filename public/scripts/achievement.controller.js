@@ -14,7 +14,9 @@ var customAchievementToSave = {
 
 
 
-
+ctrl.addAchievement = function (achievement, comment) {
+  console.log('ddddddddddddddddddddddddddddd',achievement, comment);
+}// ok works to here
 
 
 ctrl.getOnePlusHighestCustomAchievementID = function () {
