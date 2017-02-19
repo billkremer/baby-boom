@@ -11,13 +11,14 @@ router.use(bodyParser.json());
 
 
 
-router.get("/achmtsPlusMinusTwoMos", function(req, res) {  // getting the highest number
+router.get("/achmtsPlusMinusTwoMos", function(req, res) {  // getting achievements onto the page that haven't already been checked.
   // if (verbose) console.log('req', req.user, 'res',res);
+//    console.log('achietplusmin',req.user.id);
 
     var currentBD = req.user.user_baby_birthday;
 
-    console.log(currentBD);
-    console.log(typeof currentBD);
+    // console.log(currentBD);
+    // console.log(typeof currentBD);
 
     var start_date = new Date(currentBD); //Create start date object by passing appropiate argument
     var end_date = new Date(); // today
@@ -26,7 +27,7 @@ router.get("/achmtsPlusMinusTwoMos", function(req, res) {  // getting the highes
     if (total_months < 1) { total_months = 1 }; // starts at one, so that the query will get up to 3 months to start.
 
 
-console.log((total_months - 2), (total_months + 2));
+// console.log((total_months - 2), (total_months + 2));
 
 
   pool.connect(function(err, client, done) {
@@ -35,7 +36,8 @@ console.log((total_months - 2), (total_months + 2));
       res.sendStatus(500);
       done(); // returns the connection
     } else {
-      client.query( "SELECT * FROM achievements WHERE achievement_age_months > $1 AND achievement_age_months < $2;", [(total_months - 2), (total_months + 2) ],
+      client.query("SELECT achievements.id, achievement_age_months, achievement_text, achievement_placeholder FROM achievements LEFT JOIN (SELECT * FROM achievement_data WHERE (achievement_data.userid = $1 AND achievement_data.achievement_id < 1000000)) AS ache ON achievements.id = ache.achievement_id WHERE (ache.userid IS NULL OR ache.userid <> $1) AND achievement_age_months > $2 AND achievement_age_months < $3 ORDER BY achievement_age_months ASC, achievement_text;", [req.user.id, (total_months - 2), (total_months + 2) ],
+
 
 // will need to JOIN to make sure the id  isn't in the other table
 
@@ -45,7 +47,7 @@ console.log((total_months - 2), (total_months + 2));
           console.log("Error querying DB", err);
           res.sendStatus(500);
         } else {
-         if (verbose) console.log("Got get info from DB", result.rows);
+    //     if (verbose) console.log("Got get info from DB", result.rows);
           res.send(result.rows);
         };
       });  // closes client query
