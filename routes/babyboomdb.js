@@ -10,6 +10,19 @@ router.use(bodyParser.json());
 
 
 
+router.post('/saveAchievement', function (req, res) {
+  console.log(req.body, req.user);
+
+  query("INSERT INTO achievement_data (userid, achievement_id, achievement_completed_text, achievement_completed_date, achievement_completed_comment) VALUES ($1, $2, $3, $4, $5)",
+  [ req.user.id, req.body.id, req.body.achievement_text, req.body.achievementDate, req.body.achievementComment ]
+)
+
+
+
+  res.sendStatus(200);
+
+});
+
 
 router.get("/achmtsPlusMinusTwoMos", function(req, res) {  // getting achievements onto the page that haven't already been checked.
   // if (verbose) console.log('req', req.user, 'res',res);
