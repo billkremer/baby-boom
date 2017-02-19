@@ -25,6 +25,11 @@ angular
         controller: "AchievementsController as achievements",
         authRequired: true
       })
+      .when("/completed", {
+        templateUrl: "views/completed.html",
+        controller: "CompletedController as completed",
+        authRequired: true
+      })
       .when("/newUser", {
         templateUrl: "views/register.html",
         controller: "RegisterController as register"
