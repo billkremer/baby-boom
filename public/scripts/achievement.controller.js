@@ -14,10 +14,23 @@ var customAchievementToSave = {
 
 
 
-ctrl.addAchievement = function (achievement, comment) {
-  console.log('ddddddddddddddddddddddddddddd',achievement, comment);
-}// ok works to here
+ctrl.addAchievement = function (achievement) {
+  console.log('achievement to add',achievement);
 
+// need to add date field.
+
+  $http.post('/bbdb/saveAchievement', achievement).then( function(response) {
+
+    console.log(response);
+
+    ctrl.populateDom();
+
+
+  })
+
+
+
+}// close addAchievement // could merge this with add custom achievement
 
 ctrl.getOnePlusHighestCustomAchievementID = function () {
   console.log('get this far custach');
@@ -26,12 +39,18 @@ ctrl.getOnePlusHighestCustomAchievementID = function () {
     customAchievementToSave.achievement_id = response.data[0].max + 1;
 
 });
-}
+}; // close getOnePlusHighestCustomAchievementID
 
 ctrl.getOnePlusHighestCustomAchievementID();
 
+
 ctrl.addCustomAchievement = function (customAchievementText, customAchievementComment, customAchievementDate) {
 
+console.log(customAchievementDate);
+
+if (customAchievementDate == undefined) {
+  customAchievementDate = new Date();
+};
 
   customAchievementToSave.achievement_completed_text = customAchievementText;
   customAchievementToSave.achievement_completed_comment = customAchievementComment
