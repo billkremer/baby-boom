@@ -1,17 +1,18 @@
 <h1> Completed Achievements </h1>
 
+<button ng-click="completed.logout()" >Logout</button>
 
 <!-- completed achievements -->
 <div class="completedDiv" ng-repeat="individualCompletedAch in completed.completedList">
 
 
-  <textarea type="text" id="achText" name="achText" class="form-control" ng-model='individualCompletedAch.achievement_text' > {{individualAchievement.achievement_text}} </textarea>
+  <textarea type="text" class="achText" name="achText" class="form-control" ng-model='individualCompletedAch.achievement_completed_text' > {{individualAchievement.achievement_completed_text}} </textarea>
 
-  <textarea placeholder = "{{individualAchievement.achievement_placeholder}}" type="text" id="achComm" name="achComm" class="form-control" ng-model='individualCompletedAch.achievementComment' > {{individualAchievement.achievementComment}} </textarea>
+  <textarea type="text" class="achComm" name="achComm" class="form-control" ng-model='individualCompletedAch.achievement_completed_comment' > {{individualAchievement.achievement_completed_comment}} </textarea>
 
-<input type="date" name="achievementDate" ng-model="individualCompletedAch.achievementDate" />
+<input type="date" name="achievementDate" ng-model="individualCompletedAch.achievement_completed_date" value="individualCompletedAch.achievement_completed_date" />
 
-  <button ng-click="completed.addAchievement(individualAchievement)"> Save Achievement </button>
+  <button ng-click="completed.updateCompleted(individualCompletedAch)"> Update Achievement Info </button>
 
 
 </div>
