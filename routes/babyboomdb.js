@@ -10,6 +10,53 @@ router.use(bodyParser.json());
 
 
 
+router.post('/addNewContact', function (req, res) {
+    console.log('new contact',req.body, req.user);
+
+    query("INSERT INTO user_contacts (userid, contactname, contactemail) VALUES ($1, $2, $3)",
+    [ req.user.id, req.body.contactname, req.body.contactemail ]
+  )
+
+      res.sendStatus(200);
+})
+
+
+router.put('/updateContact', function (req, res) {
+    console.log('update contact',req.body, req.user);
+
+    query("UPDATE user_contacts SET contactname = $2, contactemail = $3 WHERE id = $1 RETURNING *",
+    [ req.body.id, req.body.contactname, req.body.contactemail ]
+  )
+
+      res.sendStatus(200);
+})
+
+
+router.get('/getContacts', function (req, res) {
+    console.log('get contacts',req.body, req.user);
+
+    pool.connect(function(err, client, done) {
+      if (err) {
+        console.log("Error connecting to database", err);
+        res.sendStatus(500);
+        done(); // returns the connection
+      } else {
+        client.query("SELECT * FROM user_contacts WHERE userid = $1;", [req.user.id],
+        function(err, result) {
+          done();
+          if (err) {
+            console.log("Error querying DB", err);
+            res.sendStatus(500);
+          } else {
+            //     if (verbose) console.log("Got get info from DB", result.rows);
+            res.send(result.rows);
+          };
+        });  // closes client query
+      }; // closes initial else
+    }); // closes pool.connection
+  }); // closes get
+
+
 
 router.put('/updateCompleted', function (req, res) {
     console.log('update completed',req.body, req.user);
@@ -23,14 +70,11 @@ router.put('/updateCompleted', function (req, res) {
 
 
 
-
 router.get('/showCompleted', function (req, res) {
   console.log('show completed',req.body, req.user);
 
-
   var start_date = new Date(); //last three months of completed achievements
   // console.log(start_date);
-
 
   pool.connect(function(err, client, done) {
     if (err) {
