@@ -5,7 +5,7 @@ angular.module('BabyBoomApp').controller('RegisterController', function($http, $
     console.log('creating a new user');
 
     $http.post('/register', {
-      username: ctrl.username,
+      username: ctrl.username.toLowerCase(),
       password: ctrl.password,
       user_fullname: ctrl.userFullName,
       user_baby_name: ctrl.babyName,

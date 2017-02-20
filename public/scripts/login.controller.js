@@ -9,7 +9,7 @@ function LoginController($http, $location) {
     console.log('logging in');
     ctrl.message = "";
     $http.post('/login', {
-      username: ctrl.username,
+      username: ctrl.username.toLowerCase(),
       password: ctrl.password
     }).then(function(response){
       console.log('LoginController response',response);
