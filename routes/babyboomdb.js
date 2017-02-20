@@ -10,14 +10,57 @@ router.use(bodyParser.json());
 
 
 
+
+router.put('/updateCompleted', function (req, res) {
+    console.log('update completed',req.body, req.user);
+
+    query("UPDATE achievement_data SET achievement_completed_date = $2, achievement_completed_comment = $3, achievement_completed_text = $4 WHERE id = $1 RETURNING *",
+    [ req.body.id, req.body.achievement_completed_date, req.body.achievement_completed_comment, req.body.achievement_completed_text]
+  )
+
+    res.sendStatus(200);
+});
+
+
+
+
+router.get('/showCompleted', function (req, res) {
+  console.log('show completed',req.body, req.user);
+
+
+  var start_date = new Date(); //last three months of completed achievements
+  // console.log(start_date);
+
+
+  pool.connect(function(err, client, done) {
+    if (err) {
+      console.log("Error connecting to database", err);
+      res.sendStatus(500);
+      done(); // returns the connection
+    } else {
+      client.query("SELECT * FROM achievement_data WHERE userid = $1 AND achievement_completed_date < $2 AND achievement_completed_date > ($2::date - '3 month'::interval) ORDER BY achievement_completed_date DESC LIMIT 50;", [req.user.id, start_date],
+      function(err, result) {
+        done();
+        if (err) {
+          console.log("Error querying DB", err);
+          res.sendStatus(500);
+        } else {
+          //     if (verbose) console.log("Got get info from DB", result.rows);
+          res.send(result.rows);
+        };
+      });  // closes client query
+    }; // closes initial else
+  }); // closes pool.connection
+}); // closes get
+
+
+
 router.post('/saveAchievement', function (req, res) {
   console.log(req.body, req.user);
 
   query("INSERT INTO achievement_data (userid, achievement_id, achievement_completed_text, achievement_completed_date, achievement_completed_comment) VALUES ($1, $2, $3, $4, $5)",
   [ req.user.id, req.body.id, req.body.achievement_text, req.body.achievementDate, req.body.achievementComment ]
 )
-
-
 
   res.sendStatus(200);
 
