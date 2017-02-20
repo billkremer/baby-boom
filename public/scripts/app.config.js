@@ -30,6 +30,11 @@ angular
         controller: "CompletedController as completed",
         authRequired: true
       })
+      .when("/contactsPage", {
+        templateUrl: "views/contacts.html",
+        controller: "ContactsController as completed",
+        authRequired: true
+      })
       .when("/newUser", {
         templateUrl: "views/register.html",
         controller: "RegisterController as register"
