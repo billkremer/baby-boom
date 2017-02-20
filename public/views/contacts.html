@@ -1,0 +1,39 @@
+
+<h1> Contacts </h1>
+
+<button ng-click="contacts.logout()" >Logout</button>
+
+
+<!-- add a enw contact -->
+<div>
+
+<h2>Add a new Contact:</h2>
+
+
+<form class="" ng-submit="contacts.addNewContact(contacts.newContactName,contacts.newContactEmail)">
+  <div class="form-group row">
+<input  placeholder="Name" type="text" id="newContactName" name="newContactName" ng-model='contacts.newContactName' required />
+
+<input type="email" placeholder="Email" name="newContactEmail" ng-model="contacts.newContactEmail" required />
+
+<button type="submit" class="btn btn-primary" ng-disabled="contacts.$invalid">Save New Contact</button>
+
+</div>
+
+</div>
+
+
+
+<h2>My Contacts:</h2>
+<!-- completed achievements -->
+<div class="contactsDiv" ng-repeat="individualContact in contacts.contactList">
+
+
+  <input type="text" class="contactName" name="contactname" class="form-control" ng-model='individualContact.contactname' />
+
+  <input type="text" class="contactEmail" name="contactEmail" class="form-control" ng-model='individualContact.contactemail' />
+
+  <button ng-click="contacts.updateContact(individualContact)"> Update Contact Info </button>
+
+
+</div>

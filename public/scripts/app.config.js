@@ -32,7 +32,7 @@ angular
       })
       .when("/contactsPage", {
         templateUrl: "views/contacts.html",
-        controller: "ContactsController as completed",
+        controller: "ContactsController as contacts",
         authRequired: true
       })
       .when("/newUser", {
