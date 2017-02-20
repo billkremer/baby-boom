@@ -1,6 +1,9 @@
+var verbose = true; // hide console.logs
+
+
 angular.module('BabyBoomApp').controller('ContactsController', function($http, $location){
 
-console.log('inside contacts controller');
+  if (verbose) console.log('inside contacts controller');
 
 var ctrl = this;
 
@@ -14,14 +17,30 @@ ctrl.addNewContact = function (newName, newEmail) {
     contactemail: newEmail,
   };
 
-$http.post('/bbdb/addNewContact', contactToAdd);
+$http.post('/bbdb/addNewContact', contactToAdd).then(function () {
+
+  ctrl.newContactEmail = "";
+  ctrl.newContactName = "";
+  ctrl.populateDom();
+
+});
+
+
+}
+
+ctrl.deleteContact = function (contactToDelete) {
+  if (verbose) console.log('contactToDelete', contactToDelete);
+
+  $http.delete('/bbdb/deleteContact/' + contactToDelete.id)
 
   ctrl.populateDom();
 }
 
 
+
+
 ctrl.updateContact = function (contactToUpdate) {
-//    console.log('contactToUpdate', contactToUpdate);
+    if (verbose)   console.log('contactToUpdate', contactToUpdate);
   $http.put('/bbdb/updateContact', contactToUpdate)
 
   ctrl.populateDom();

@@ -35,6 +35,11 @@ angular
         controller: "ContactsController as contacts",
         authRequired: true
       })
+      .when("/buildPDF", {
+        templateUrl: "views/buildpdf.html",
+        controller: "BuildPDFController as buildpdf",
+        authRequired: true
+      })
       .when("/newUser", {
         templateUrl: "views/register.html",
         controller: "RegisterController as register"

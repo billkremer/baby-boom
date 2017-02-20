@@ -32,6 +32,21 @@ router.put('/updateContact', function (req, res) {
 })
 
 
+router.delete('/deleteContact/:id', function (req, res) {
+  if (verbose) console.log(req.body, 'req.body delete contact');
+  if (verbose) console.log(req.params, 'req.params delete contact');
+
+
+  query("DELETE FROM user_contacts WHERE id = $1",
+  [ req.params.id ]
+)
+
+    res.sendStatus(204);
+})
+
+
+
+
 router.get('/getContacts', function (req, res) {
     console.log('get contacts',req.body, req.user);
 
