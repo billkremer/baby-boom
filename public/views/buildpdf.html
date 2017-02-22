@@ -1,0 +1,32 @@
+<h1>Let's build a pdf!</h1>
+
+
+<!-- recent photos -->
+<div>
+
+</div>
+
+<!-- recent achievements -->
+
+<p>
+   click on up to four
+</p>
+
+
+<div class="achievementDiv" ng-repeat="achievement in buildpdf.achievementList">
+
+<div class='checkbox'>
+
+<label><input type="checkbox" ng-model="achievement.checked" />
+</label>
+</div>
+
+  <input type="date" name="achievementDate" class="form-control buildpdf-ach-date" ng-model="achievement.achievement_completed_date" disabled/>
+
+  <input type="text" name="achText" class="form-control buildpdf-ach-text" ng-model='achievement.achievement_completed_text' disabled />
+
+  <input  type="text" name="achComm" class="form-control buildpdf-ach-comment" ng-model='achievement.achievement_completed_comment' disabled />
+
+
+
+</div>
