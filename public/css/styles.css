@@ -21,3 +21,8 @@
 /*div {
   border: 1px solid black;
 }*/
+
+#loginDemoPhoto {
+  max-width: 300px;
+  border: 1px solid black;
+}
