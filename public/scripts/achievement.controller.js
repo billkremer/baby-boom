@@ -1,3 +1,5 @@
+var verbose = true;
+
 angular.module('BabyBoomApp').controller('AchievementsController', function($http, $location){
 
 console.log('inside achievements controller');
@@ -15,13 +17,13 @@ var customAchievementToSave = {
 
 
 ctrl.addAchievement = function (achievement) {
-  console.log('achievement to add',achievement);
+  if (verbose) console.log('achievement to add',achievement);
 
 // need to add date field.
 
   $http.post('/bbdb/saveAchievement', achievement).then( function(response) {
 
-    console.log(response);
+    if (verbose) console.log(response);
 
     ctrl.populateDom();
 
@@ -33,7 +35,7 @@ ctrl.addAchievement = function (achievement) {
 }// close addAchievement // could merge this with add custom achievement
 
 ctrl.getOnePlusHighestCustomAchievementID = function () {
-  console.log('get this far custach');
+  if (verbose) console.log('get this far custach');
   $http.get('/bbdb/highestCustomAchievementID').then( function(response) {
   //  console.log('response.data[0]', response.data[0].max);
     customAchievementToSave.achievement_id = response.data[0].max + 1;
@@ -46,7 +48,7 @@ ctrl.getOnePlusHighestCustomAchievementID();
 
 ctrl.addCustomAchievement = function (customAchievementText, customAchievementComment, customAchievementDate) {
 
-console.log(customAchievementDate);
+if (verbose) console.log(customAchievementDate);
 
 if (customAchievementDate == undefined) {
   customAchievementDate = new Date();
@@ -59,19 +61,21 @@ if (customAchievementDate == undefined) {
 //   customAchievementToSave.userid =
   $http.post('/bbdb/addCustomAchievement', customAchievementToSave).then(function(response) {
 
-    console.log(response);
-  ctrl.getOnePlusHighestCustomAchievementID();
+  if (verbose)   console.log(response);
+    ctrl.getOnePlusHighestCustomAchievementID();
 
-    // customAchievementToSave.achievement_id++; // so the next custom achiement has anew number.
+    ctrl.customAchievement.text = "";
+    ctrl.customAchievement.comment = "";
+    ctrl.customAchievement.date = new Date(); //?
 
-  })
+  });
 
 }; // close add custom achievement
 
 
 ctrl.populateDom = function () {
   $http.get('/bbdb/achmtsPlusMinusTwoMos').then(function(response) {
-    console.log('here!' , response.data);
+  if (verbose)   console.log('here!' , response.data);
     ctrl.achievementList = response.data; // standard achievements
 
   });
