@@ -1,1 +1,1 @@
-angular.module('BabyBoomApp', ['ngRoute']);
+angular.module('BabyBoomApp', ['ngRoute', 'ngFileUpload']);

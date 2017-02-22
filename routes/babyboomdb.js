@@ -9,6 +9,17 @@ var bodyParser = require("body-parser");
 router.use(bodyParser.json());
 
 
+// router.post('/addPhoto', function (req, res) {
+//     console.log('new contact',req.body, req.user);
+//
+//     query("INSERT INTO pictures (userid, picture_url) VALUES ($1, $2)",
+//     [ req.user.id, req.body.picture_url]
+//   )
+//
+//       res.sendStatus(200);
+//
+// });
+
 
 router.post('/addNewContact', function (req, res) {
     console.log('new contact',req.body, req.user);
@@ -18,7 +29,7 @@ router.post('/addNewContact', function (req, res) {
   )
 
       res.sendStatus(200);
-})
+});
 
 
 router.put('/updateContact', function (req, res) {

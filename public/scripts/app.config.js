@@ -40,6 +40,11 @@ angular
         controller: "BuildPDFController as buildpdf",
         authRequired: true
       })
+      .when("/photosPage", {
+        templateUrl: "views/photos.html",
+        controller: "PhotosController as photos",
+        authRequired: true
+      })
       .when("/newUser", {
         templateUrl: "views/register.html",
         controller: "RegisterController as register"
