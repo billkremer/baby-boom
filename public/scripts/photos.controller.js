@@ -19,10 +19,7 @@ ctrl.submit = function () {
   console.log('what da?');
   console.log(ctrl);
 
-
-
         console.log('file',ctrl.file);
-
 
       // if (ctrl.form.file.$valid && ctrl.file) {
     ctrl.upload(ctrl.file);
@@ -31,10 +28,6 @@ ctrl.submit = function () {
 
   };
 
-
-
-
-
 var photoToPost = {
   data: {
     file: ctrl.file,
@@ -42,7 +35,6 @@ var photoToPost = {
   }
 
 }
-
 
 
 
@@ -57,8 +49,6 @@ ctrl.getImages = function () {
 
 //loads any already uploaded images
 ctrl.getImages();
-
-
 
 
 ctrl.upload = function(file) {
@@ -80,15 +70,6 @@ ctrl.upload = function(file) {
 
     );
   };
-
-
-
-
-
-
-
-
-
 
 
 
