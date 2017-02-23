@@ -64,6 +64,8 @@ ctrl.upload = function(file) {
       }).then(function(resp) {
           console.log('Success ' + resp.config.data.file.name + ' uploaded. Response: ' + resp.data);
         ctrl.getImages();
+        ctrl.file = "";
+        ctrl.comment = "";
       }, function(resp) {
           console.log('Error status: ' + resp.status);
       }

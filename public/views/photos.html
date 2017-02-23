@@ -1,14 +1,8 @@
 <h1>Photos</h1>
 
 
-
+<!-- get pictures -->
 <form name="form"  >
- <!-- <span> {{photos.file.$ngfName}} </span> -->
-<!-- ngf-min-height="100" ngf-resize="{width: 800, height: 800}" -->
-<!-- ngf-pattern="'image/*'" ngf-accept="'image/*'"  -->
-
-
-<!-- <input type="file" ngf-select ng-model="photos.file" name="file" accept="image/*" ngf-max-size="20MB" required ngf-model-invalid="errorFile" /> -->
 
         <div ngf-select type="file" ng-model="photos.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" >
             <button>Select Picture</button></div>
@@ -16,6 +10,8 @@
     <button type="submit" ng-click="photos.submit()" >Upload</button>
 
 </form>
+
+<!-- show pictures -->
 
 <div class="indivPhoto text-center" ng-repeat="picture in photos.photoList">
 <img ng-src="{{picture.picture_url}}" />

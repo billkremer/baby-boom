@@ -66,10 +66,12 @@
   border-radius: 3px;
 }
 
+.achievementDiv {
+    border: 1px solid black;
+    border-radius: 3px;
+}
 
 .builtPdf-li {
-  /*text-decoration: none;
-  decoration: none;*/
   list-style-type: none;
 }
 
