@@ -9,7 +9,7 @@
 <!-- recent achievements selector selections -->
 <div class="buildAchievementDiv">
 <p>
-  <span>1.</span> Click on up to four achievements.  Go back to the <a href="/completedPage">Completed Achievements Page</a> to edit the achievements.
+  <span>1.</span> Select on up to four achievements.  Go back to the <a href="/completedPage">Completed Achievements Page</a> to edit the achievements.
 </p>
 
 
@@ -58,20 +58,32 @@
 <div class="buildTheBuild">
 
   <p>
-     <span>3.</span> After selecting four achivevments and
-
-
-     Click one photo to use.  Go back to the <a href="/photosPage">Photos Page</a> to edit the photo comments.
+     <span>3.</span> After selecting up to four achievements and a photo, double check to ensure that the setup looks correct below.
   </p>
 
+<!-- <div class=>
+
+</div> -->
 
 
+<div class="builtPdf  text-center" >
+  <p>
+    {{buildpdf.babyName}}
+    {{buildpdf.calculatedMonths}} months old
+  </p>
+<img ng-src="{{buildpdf.photoForPdf.picture_url}}" />
+<div>
+  <ul>
+    <li class="text-left builtPdf-li" ng-repeat="achieve in buildpdf.achPdfList">
+      {{achieve.achievement_completed_date_string}} -- {{achieve.achievement_completed_text}} -- {{achieve.achievement_completed_comment}}
+    </li>
+
+
+  </ul>
+</div>
 </div>
 
 
 
 
-        <!-- <li ng-repeat="item in items">
-              <input type="checkbox" ng-model="item.winner" ng-change="checkChanged(item)" ng-disabled="checked==limit && !item.winner"/>
-             <h2>  {{item.better}}</h2>
-             <span>{{item.startTime}}</span> -->
+</div>

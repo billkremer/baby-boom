@@ -10,6 +10,41 @@ ctrl.achievementList = [];
 
 
 
+
+
+ctrl.getProfileData = function () {
+  console.log("trying to get data");
+  $http.get('/profile').then(function(response) {
+
+
+    console.log('gothere buildpdf controller?', response);
+    ctrl.id = response.data.id;
+    ctrl.username = response.data.username;
+    ctrl.realName = response.data.user_fullname;
+    ctrl.babyName = response.data.user_baby_name;
+    ctrl.babyBirthday = new Date(response.data.user_baby_birthday); // comes from the db as a string? so needs to be a Date again...
+
+
+    var start_date = new Date(ctrl.babyBirthday); //Create start date object by passing appropiate argument
+    var end_date = new Date(); // today
+    var total_months = (end_date.getFullYear() - start_date.getFullYear())*12 + (end_date.getMonth() - start_date.getMonth() )  +  ( end_date.getDate() - start_date.getDate() ) /30 ;
+
+    ctrl.calculatedMonths = Math.round(total_months);
+
+    }).catch(function(err){
+        console.log('Error getting data');
+      });
+
+  };
+// console.log(temp);
+
+
+ctrl.getProfileData();
+
+
+
+
+
     ctrl.photoLimit = 1;
     ctrl.photoChecked = 0;
 
@@ -20,7 +55,7 @@ ctrl.checkPicChanged = function (picture) {
           console.log(picture);
         }
         ctrl.photoForPdf = picture;
-      
+
 }
 //console.log(ctrl.items)
 
@@ -40,8 +75,13 @@ ctrl.checkAchChanged = function (achievement) {
       if (singleAch.select) {
         ctrl.achPdfList.push(singleAch);
       }
-
     }); //forEach closer
+
+    ctrl.achPdfList.forEach(function (item) {
+      item.achievement_completed_date_string = item.achievement_completed_date.toString().substring(0,15);
+
+    })
+
 
     console.log(ctrl.achPdfList);
 

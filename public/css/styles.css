@@ -27,7 +27,7 @@
   border: 1px solid black;
 }
 
-.buildAchievementDiv{
+.buildAchievementDiv {
   width: 40%;
   float: left;
   overflow: hidden;
@@ -39,13 +39,39 @@
   overflow: hidden;
 }
 
-.buildAchievementDiv > p, .buildPhotoDiv > p {
+.buildTheBuild {
+  width: 35%;
+  float: right;
+}
+
+.buildAchievementDiv > p, .buildPhotoDiv > p, .buildTheBuild > p {
   border: 1px solid black;
   padding: 2px 2px;
   margin: 3px 3px;
   border-radius: 3px;
 }
 
+.buildAchievementDiv > p > span, .buildPhotoDiv > p > span, .buildTheBuild > p > span {
+  float: left;
+  font-size: 200%;
+  font-weight: bold;
+  padding: 0px 3px 0px 2px;
+}
+
+.builtPdf {
+  width: 100%;
+  border: 1px solid black;
+  padding: 2px 2px;
+  margin: 3px 3px;
+  border-radius: 3px;
+}
+
+
+.builtPdf-li {
+  /*text-decoration: none;
+  decoration: none;*/
+  list-style-type: none;
+}
 
 .indivPhoto {
   border: 1px solid black;
@@ -57,7 +83,7 @@
   overflow: hidden;
 }
 
-.indivPhoto img {
+.indivPhoto img, .builtPdf img {
   max-width: 95%;
   max-height: 75%
 }
