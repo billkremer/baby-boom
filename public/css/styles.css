@@ -26,3 +26,42 @@
   max-width: 300px;
   border: 1px solid black;
 }
+
+.buildAchievementDiv{
+  width: 40%;
+  float: left;
+  overflow: hidden;
+}
+
+.buildPhotoDiv {
+  width: 210px;
+  float: left;
+  overflow: hidden;
+}
+
+.buildAchievementDiv > p, .buildPhotoDiv > p {
+  border: 1px solid black;
+  padding: 2px 2px;
+  margin: 3px 3px;
+  border-radius: 3px;
+}
+
+
+.indivPhoto {
+  border: 1px solid black;
+  width: 200px;
+  height: 300px;
+  padding: 2px 2px;
+  margin: 3px 3px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.indivPhoto img {
+  max-width: 95%;
+  max-height: 75%
+}
+
+.indivPhoto p {
+  padding: 2px 2px;
+}
