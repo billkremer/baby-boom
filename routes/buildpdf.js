@@ -3,6 +3,14 @@ var verbose = true; // for turning off console.logs
 var Pdf = require('pdfkit');
 // var fs = require('fs');
 
+
+
+
+
+
+
+
+
 var createPdf = function(pdfObject) {
 
 

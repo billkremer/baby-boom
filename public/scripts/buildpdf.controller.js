@@ -6,9 +6,53 @@ console.log('inside buildpdf controller');
 
 var ctrl = this;
 
+ctrl.achievementList = [];
+
+
+
+    ctrl.photoLimit = 1;
+    ctrl.photoChecked = 0;
+
+ctrl.checkPicChanged = function (picture) {
+        if (picture.select) { ctrl.photoChecked++;
+        console.log(picture); }
+        else {ctrl.photoChecked--;
+          console.log(picture);
+        }
+        ctrl.photoForPdf = picture;
+      
+}
+//console.log(ctrl.items)
+
+
+ctrl.achievLimit = 4;
+ctrl.achievChecked = 0;
+
+ctrl.checkAchChanged = function (achievement) {
+    if (achievement.select) { ctrl.achievChecked++;
+    console.log(achievement); }
+    else {ctrl.achievChecked--;
+      console.log(achievement);
+    }
+
+    ctrl.achPdfList = [];
+    ctrl.achievementList.forEach(function (singleAch) {
+      if (singleAch.select) {
+        ctrl.achPdfList.push(singleAch);
+      }
+
+    }); //forEach closer
+
+    console.log(ctrl.achPdfList);
+
+};
+
+
+
+
 
 // does this need further changes?
-ctrl.populateDom = function () {
+ctrl.populateDomAches = function () {
   $http.get('/bbdb/showCompleted').then(function(response) {
     console.log('here!' , response.data);
     ctrl.achievementList = response.data; // standard achievements
@@ -27,7 +71,28 @@ ctrl.populateDom = function () {
   //  ??? profit!!??
 }; // close populateDom
 
-ctrl.populateDom();
+ctrl.populateDomAches();
+
+
+//loads images already uploaded
+ctrl.getImages = function () {
+    $http.get('/photos')
+        .then(function(response) {
+            ctrl.photoList = response.data.slice(0,11);
+
+            ctrl.photoList.forEach(function (singlePhoto) {
+              singlePhoto.select = false;
+            });
+        console.log('GET /photos ', ctrl.photoList);
+        });
+        console.log('GET /photos ', ctrl.photoList);
+}
+
+//loads any already uploaded images
+ctrl.getImages();
+
+
+
 
 
   ctrl.logout = function() {
