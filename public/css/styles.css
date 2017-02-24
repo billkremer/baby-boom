@@ -71,9 +71,18 @@
     border-radius: 3px;
 }
 
-.builtPdf-li {
-  list-style-type: none;
+.builtPdf-p {
+
 }
+
+#buildPdf-title {
+  font-size: 2em;
+  font-weight: bold;
+  padding: 2px 2px;
+}
+
+
+
 
 .indivPhoto {
   border: 1px solid black;
