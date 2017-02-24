@@ -34,14 +34,15 @@ router.post('/', function (req, res) {
 
     var textEmail = mailData.babyName + " is " + mailData.months + mailData.monthsText + "!\n";
 
-    var htmlEmail = "<h1>" + mailData.babyName +  "</h1>"
-    htmlEmail += "<h2>" + mailData.months + mailData.monthsText + "</h2>"
+    var htmlEmail = "<h1>" + mailData.babyName +  " </h1>";
+    htmlEmail += "<h2>" + mailData.months + mailData.monthsText + "</h2>";
 
 
 
     mailData.aches.forEach( function (indivAch) {
-      textEmail += indivAch.achievement_completed_date_string + " -- " + indivAch.achievement_completed_text + " -- " + indivAch.achievement_completed_comment
-      htmlEmail += "<p>" + indivAch.achievement_completed_date_string + " -- " + indivAch.achievement_completed_text + " -- " + indivAch.achievement_completed_comment + "</p>"
+      textEmail += indivAch.achievement_completed_date_string + " -- " + indivAch.achievement_completed_text + " -- " + indivAch.achievement_completed_comment;
+
+      htmlEmail += "<p>" + indivAch.achievement_completed_date_string + " -- " + indivAch.achievement_completed_text + " -- " + indivAch.achievement_completed_comment + "</p>";
     });
 
 
@@ -49,9 +50,7 @@ router.post('/', function (req, res) {
     //set up options
     var mailOptions = {
       from: "Baby-Boom Booker <baby.boom.booker@gmail.com>", // sender address
-      //TODO: change this before deploying-- currently, all emails just send to me
       to: contactsArray, //receiver
-    //  to: 'Receiver <bhkremer@hotmail.com>',
 
       subject: 'Update from '+ req.user.user_fullname  + ' via Baby-Boom', //subject line
       text: textEmail, // plain text
@@ -60,7 +59,7 @@ router.post('/', function (req, res) {
             filename: mailData.photo.picture_originalname,
             path: mailData.photo.picture_url
         }]
-    }; // end mailOptions
+    }; // end mailOptions object
 
     console.log(mailOptions.attachments);
 
