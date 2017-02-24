@@ -66,23 +66,24 @@
 
 
 <div class="builtPdf  text-center" >
-  <p>
-    {{buildpdf.babyName}}
-    {{buildpdf.calculatedMonths}} months old
+  <p id="buildPdf-title">
+    {{buildpdf.babyName}}<br />
+    {{buildpdf.calculatedMonths}}{{buildpdf.calculatedMonthsText}}
   </p>
-<img ng-src="{{buildpdf.photoForPdf.picture_url}}" />
+<img ng-src={{buildpdf.photoForPdf.picture_url}} />
 <div>
-  <ul>
-    <li class="text-left builtPdf-li" ng-repeat="achieve in buildpdf.achPdfList">
+
+    <p class="text-left builtPdf-p" ng-repeat="achieve in buildpdf.achPdfList">
       {{achieve.achievement_completed_date_string}} -- {{achieve.achievement_completed_text}} -- {{achieve.achievement_completed_comment}}
-    </li>
+    </p>
 
 
-  </ul>
+
 </div>
 </div>
 
 
+<button class="text-center btn btn-success" type="button" ng-disabled="((buildpdf.photoChecked == 0) && (buildpdf.achievChecked == 0)) || buildpdf.sendingEmail" ng-click="buildpdf.sendEmail()">Click to email!</button>
 
 
 </div>

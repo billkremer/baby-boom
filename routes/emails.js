@@ -1,80 +1,129 @@
-var nodemailer = require("nodemailer");
+var verbose = true; // lets messages be turned off for non-error console.logs
 
+var nodemailer = require("nodemailer");
 var express = require("express");
 var router = express.Router();
 
-
-var smtpTransport = nodemailer.createTransport("SMTP",{
-   service: "Gmail",  // sets automatically host, port and connection security settings
-   auth: {
-       user: "baby.boom.booker@gmail.com",
-       pass: "gmailPassword"
-   }
-});
-
-smtpTransport.sendMail({  //email options
-   from: "Baby-Boom Booker <baby.boom.booker@gmail.com>", // sender address.  Must be the same as authenticated user if using Gmail.
-   to: "Receiver Name <receiver@email.com>", // receiver
-   subject: "Emailing with nodemailer", // subject
-   text: "Email Example with nodemailer" // body
+// probably not necessary...
+// var pool = require("../db/connection");
+//
+// var bodyParser = require("body-parser");
+// router.use(bodyParser.json());
 
 
-}, function(error, response){  //callback
-   if(error){
-       console.log(error);
-   }else{
-       console.log("Message sent: " + response.message);
-   }
+router.post('/', function (req, res) {
+  //  if (verbose) console.log('new email',req.body, req.user); // see below
 
-   smtpTransport.close(); // shut down the connection pool, no more messages.  Comment this line out to continue sending emails.
-});
+    var mailData = req.body;
+    var contactsArray = [];
+
+    mailData.contacts.forEach(function (aContact) {
+      contactsArray.push('"'+ aContact.contactname +'" <' +aContact.contactemail+'>');
+    });
+    //  console.log(contactsArray);
 
 
 
-
-
-
-
-var nodemailer = require('nodemailer');
-
-var router = express.Router();
-app.use('/sayHello', router);
-
-router.post('/', handleSayHello); // handle the route at yourdomain.com/sayHello
-
-function handleSayHello(req, res) {
-    // Not the movie transporter!
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
             user: 'baby.boom.booker@gmail.com', // Your email id
-            pass: 'password' // Your password
-        }
+            pass: 'gasstationtvstory' // Your password
+        } // end auth
+    }); // end createTransport
+
+    var textEmail = mailData.babyName + " is " + mailData.months + mailData.monthsText + "!\n";
+
+    var htmlEmail = "<h1>" + mailData.babyName +  "</h1>"
+    htmlEmail += "<h2>" + mailData.months + mailData.monthsText + "</h2>"
+
+
+
+    mailData.aches.forEach( function (indivAch) {
+      textEmail += indivAch.achievement_completed_date_string + " -- " + indivAch.achievement_completed_text + " -- " + indivAch.achievement_completed_comment
+      htmlEmail += "<p>" + indivAch.achievement_completed_date_string + " -- " + indivAch.achievement_completed_text + " -- " + indivAch.achievement_completed_comment + "</p>"
     });
-    ...
-    ...
-    ...
-}
 
-var text = 'Hello world from \n\n' + req.body.name;
 
-var mailOptions = {
-    from: 'example@gmail.com>', // sender address
-    to: 'receiver@destination.com', // list of receivers
-    subject: 'Email Example', // Subject line
-    text: text //, // plaintext body
-    // html: '<b>Hello world ✔</b>' // You can choose to send an HTML body instead
-};
 
-transporter.sendMail(mailOptions, function(error, info){
-    if(error){
+    //set up options
+    var mailOptions = {
+      from: "Baby-Boom Booker <baby.boom.booker@gmail.com>", // sender address
+      //TODO: change this before deploying-- currently, all emails just send to me
+      to: contactsArray, //receiver
+    //  to: 'Receiver <bhkremer@hotmail.com>',
+
+      subject: 'Update from '+ req.user.user_fullname  + ' via Baby-Boom', //subject line
+      text: textEmail, // plain text
+      html: htmlEmail, //html
+      attachments: [{   // use URL as an attachment
+            filename: mailData.photo.picture_originalname,
+            path: mailData.photo.picture_url
+        }]
+    }; // end mailOptions
+
+    console.log(mailOptions.attachments);
+
+    //send the email
+    transporter.sendMail( mailOptions, function(error, message ) {
+      //if there was an error, log it
+      if (error) {
         console.log(error);
-        res.json({yo: 'error'});
-    }else{
-        console.log('Message sent: ' + info.response);
-        res.json({yo: info.response});
-    };
-});
+        res.sendStatus(500);
+      // else, print success message
+      } else {
+        console.log('Message %s sent: %s', message.messageId, message.response);
+        res.sendStatus(201);
+      } // end else
+    }); // end sendMail
+
+}); // end post
+
+
+// new email { id: 5,
+//   babyName: 'Kathy',
+//   months: 1,
+//   monthsText: ' month old',
+//   photo:
+//    { id: 13,
+//      userid: 5,
+//      picture_url: 'https://baby-boom.s3.amazonaws.com/1487862991520user5',
+//      picture_comment: 'another beautiful photo',
+//      picture_originalname: 'P5100002.JPG',
+//      select: true },
+//   aches:
+//    [ { id: 43,
+//        userid: 5,
+//        achievement_id: 1,
+//        achievement_completed_text: 'Begins to smile at people',
+//        achievement_completed_date: '2017-02-21T06:00:00.000Z',
+//        achievement_completed_comment: 'smiled at gradma',
+//        select: true,
+//        achievement_completed_date_string: 'Tue Feb 21 2017' },
+//      { id: 40,
+//        userid: 5,
+//        achievement_id: 1000021,
+//        achievement_completed_text: 'new achievemnets',
+//        achievement_completed_date: '2017-02-20T06:00:00.000Z',
+//        achievement_completed_comment: 'grandpa',
+//        select: true,
+//        achievement_completed_date_string: 'Mon Feb 20 2017' } ],
+//     contacts:
+  //  [ { id: 1,
+  //      userid: 5,
+  //      contactname: 'Bill',
+  //      contactemail: 'bhkremer@hotmail.com' },
+  //    { id: 11,
+  //      userid: 5,
+  //      contactname: 'Bill2',
+  //      contactemail: 'bkrems12@yahoo.com' } ] } anonymous {
+  // id: 5,
+//   username: '4@4',
+//   password: '$2a$10$9xz7IrMbNJNXLhK/p38oQOOagf5WchKd/rzwhM6uXoilg7JjafUnK',
+//   user_baby_name: 'Kathy',
+//   user_baby_birthday: 2017-01-14T06:00:00.000Z,
+//   user_fullname: 'asdf' }
+
 
 
 module.exports = router;

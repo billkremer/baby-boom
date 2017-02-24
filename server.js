@@ -10,7 +10,7 @@ var register = require('./routes/register');
 var profile = require('./routes/profile')
 var babyboomdb = require('./routes/babyboomdb')
 var photos = require('./routes/photos')
-
+var emails = require('./routes/emails')
 
 require('./auth/setup');
 
@@ -47,7 +47,8 @@ app.use('/private', ensureAuthenticated);
 
 app.use('/profile', profile);
 app.use('/bbdb', babyboomdb); // pass through to the babyboomdb.js route
-app.use('/photos', photos)
+app.use('/photos', photos); // pass through for s3 photo bucket stuff
+app.use('/emails', emails); // passthrough for email route
 
 app.get('/private/secretInfo', function(req, res){
   console.log('Sending secret info');

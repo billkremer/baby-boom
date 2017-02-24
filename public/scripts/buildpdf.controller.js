@@ -8,7 +8,48 @@ var ctrl = this;
 
 ctrl.achievementList = [];
 
+ctrl.sendingEmail = false;
 
+
+
+
+ctrl.sendEmail = function () {
+
+  ctrl.sendingEmail = true;
+
+  var emailDataObject = {
+    id: ctrl.id,
+    babyName: ctrl.babyName,
+    months: ctrl.calculatedMonths,
+    monthsText: ctrl.calculatedMonthsText,
+
+    photo: ctrl.photoForPdf, // photo object
+    aches: ctrl.achPdfList, // array of achievement objects selected.
+
+    contacts: ctrl.contactList,
+  };
+
+  console.log('emailDataObject', emailDataObject);
+
+
+  $http.post('/emails', emailDataObject).then(function(response) {
+    console.log('back from emails.' , response.data);
+
+  }).then(function() {
+    $location.path('/home')
+  });
+
+};
+
+
+ctrl.getEmails = function () {
+  console.log("trying to get data");
+  $http.get('/bbdb/getContacts').then(function(response) {
+    ctrl.contactList = response.data;
+  });
+};
+
+ctrl.getEmails();
 
 
 
@@ -31,6 +72,12 @@ ctrl.getProfileData = function () {
 
     ctrl.calculatedMonths = Math.round(total_months);
 
+    if (ctrl.calculatedMonths == 1) {
+      ctrl.calculatedMonthsText = " month old";
+    } else {
+    ctrl.calculatedMonthsText = " months old";
+    }
+
     }).catch(function(err){
         console.log('Error getting data');
       });
@@ -43,21 +90,21 @@ ctrl.getProfileData();
 
 
 
-
-
     ctrl.photoLimit = 1;
     ctrl.photoChecked = 0;
 
 ctrl.checkPicChanged = function (picture) {
-        if (picture.select) { ctrl.photoChecked++;
-        console.log(picture); }
-        else {ctrl.photoChecked--;
-          console.log(picture);
-        }
-        ctrl.photoForPdf = picture;
-
-}
-//console.log(ctrl.items)
+        if (picture.select) {
+          ctrl.photoChecked++;
+          console.log('checked',picture);
+          ctrl.photoForPdf = picture;
+        } else {
+          ctrl.photoChecked--;
+          console.log('unchecked',picture);
+          ctrl.photoForPdf = {picture_url: "https://baby-boom.s3.amazonaws.com/1487877505494whitebox"};
+          console.log(ctrl.photoForPdf);
+        };
+};
 
 
 ctrl.achievLimit = 4;
@@ -75,37 +122,27 @@ ctrl.checkAchChanged = function (achievement) {
       if (singleAch.select) {
         ctrl.achPdfList.push(singleAch);
       }
-    }); //forEach closer
+    }); //forEach closer // recreates the list each time.
 
     ctrl.achPdfList.forEach(function (item) {
       item.achievement_completed_date_string = item.achievement_completed_date.toString().substring(0,15);
-
-    })
-
-
+    }); // shortens the date to a string.
     console.log(ctrl.achPdfList);
-
 };
 
 
 
 
 
-// does this need further changes?
 ctrl.populateDomAches = function () {
   $http.get('/bbdb/showCompleted').then(function(response) {
     console.log('here!' , response.data);
     ctrl.achievementList = response.data; // standard achievements
 
-
     ctrl.achievementList.forEach(function (singleAch) {
       singleAch.achievement_completed_date = new Date(singleAch.achievement_completed_date)
-
-      //.toISOString().slice(0,10);
-    })
-
+    });
 //     console.log(ctrl.completedList);
-
   });
 
   //  ??? profit!!??
