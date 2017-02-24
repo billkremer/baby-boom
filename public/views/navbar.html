@@ -8,16 +8,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/home"><img style="height: 20px;" alt="Baby Boom Logo and Home Link" src="../images/babyboom-logo-2.png" /></a>
+      <a class="navbar-brand" href="/home"><img style="height: 20px;" alt="Baby Boom Logo and Home Link" src="../images/babyboom-logo-2.png" />Baby-Boom</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/home">Baby-Boom!</a></li>
-        <li><a href="/achievementsPage">Milestones</a></li>
+        <li class="active"><a href="/achievmentsPage">Milestones <span class="sr-only">(current)</span></a></li>
         <li><a href="/completedPage">Baby's Achievements</a></li>
-        <li class="active"><a href="/photosPage">Photos <span class="sr-only">(current)</span></a></li>
+        <li><a href="/photosPage">Photos</a></li>
         <li><a href="/buildPDF">Create the Email</a></li>
 
       </ul>
@@ -30,29 +29,3 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
-<h1>Photos</h1>
-
-
-<!-- get pictures -->
-<form name="form"  >
-
-        <div ngf-select type="file" ng-model="photos.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" >
-            <button>Select Picture</button></div>
-    <input type="text" ng-model="photos.comment" placeholder="Add comment.. " />
-    <button type="submit" ng-click="photos.submit()" >Upload</button>
-
-</form>
-
-<!-- show pictures -->
-
-<div class="indivPhoto text-center" ng-repeat="picture in photos.photoList">
-<img ng-src="{{picture.picture_url}}" />
-<div>
-    <p>
-      {{picture.picture_comment}}
-    </p><p>
-      {{picture.picture_originalname}}
-    </p>
-</div>
-</div>
