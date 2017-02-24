@@ -28,11 +28,11 @@ need to do
   - [ ] Profile Page
   - [ ] Emails Page
   - [ ]
-- [ ] emails
+- [X] emails
 - [ ] pdfs?
 - [ ] styling
-- [ ] add photo information in buildpdf
-- [ ]
+- [X] add photo information in buildpdf
+- [ ] make gmail info private.
 
 
 All Pages
@@ -62,7 +62,8 @@ BuildPdf
 - [ ] save pdf/emails as an object for later
 - [ ] remove second "--" if no comment
 - [X] x months / 1 month old.
-- [ ] add photo information
+- [X] add photo information
+- [ ] make gmail info private.
 
 User Profile
 - [ ] delete users
