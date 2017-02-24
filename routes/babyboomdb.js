@@ -9,20 +9,9 @@ var bodyParser = require("body-parser");
 router.use(bodyParser.json());
 
 
-// router.post('/addPhoto', function (req, res) {
-//     console.log('new contact',req.body, req.user);
-//
-//     query("INSERT INTO pictures (userid, picture_url) VALUES ($1, $2)",
-//     [ req.user.id, req.body.picture_url]
-//   )
-//
-//       res.sendStatus(200);
-//
-// });
-
 
 router.post('/addNewContact', function (req, res) {
-    console.log('new contact',req.body, req.user);
+    if (verbose) console.log('new contact',req.body, req.user);
 
     query("INSERT INTO user_contacts (userid, contactname, contactemail) VALUES ($1, $2, $3)",
     [ req.user.id, req.body.contactname, req.body.contactemail ]
@@ -33,7 +22,7 @@ router.post('/addNewContact', function (req, res) {
 
 
 router.put('/updateContact', function (req, res) {
-    console.log('update contact',req.body, req.user);
+    if (verbose) console.log('update contact',req.body, req.user);
 
     query("UPDATE user_contacts SET contactname = $2, contactemail = $3 WHERE id = $1 RETURNING *",
     [ req.body.id, req.body.contactname, req.body.contactemail ]
@@ -59,7 +48,7 @@ router.delete('/deleteContact/:id', function (req, res) {
 
 
 router.get('/getContacts', function (req, res) {
-    console.log('get contacts',req.body, req.user);
+    if (verbose) console.log('get contacts',req.body, req.user);
 
     pool.connect(function(err, client, done) {
       if (err) {
@@ -85,7 +74,7 @@ router.get('/getContacts', function (req, res) {
 
 
 router.put('/updateCompleted', function (req, res) {
-    console.log('update completed',req.body, req.user);
+    if (verbose) console.log('update completed',req.body, req.user);
 
     query("UPDATE achievement_data SET achievement_completed_date = $2, achievement_completed_comment = $3, achievement_completed_text = $4 WHERE id = $1 RETURNING *",
     [ req.body.id, req.body.achievement_completed_date, req.body.achievement_completed_comment, req.body.achievement_completed_text]
@@ -97,7 +86,7 @@ router.put('/updateCompleted', function (req, res) {
 
 
 router.get('/showCompleted', function (req, res) {
-  console.log('show completed',req.body, req.user);
+  if (verbose) console.log('show completed',req.body, req.user);
 
   var start_date = new Date(); //last three months of completed achievements
   // console.log(start_date);
@@ -126,7 +115,7 @@ router.get('/showCompleted', function (req, res) {
 
 
 router.post('/saveAchievement', function (req, res) {
-  console.log(req.body, req.user);
+  if (verbose) console.log(req.body, req.user);
 
   query("INSERT INTO achievement_data (userid, achievement_id, achievement_completed_text, achievement_completed_date, achievement_completed_comment) VALUES ($1, $2, $3, $4, $5)",
   [ req.user.id, req.body.id, req.body.achievement_text, req.body.achievementDate, req.body.achievementComment ]
@@ -143,8 +132,6 @@ router.get("/achmtsPlusMinusTwoMos", function(req, res) {  // getting achievemen
 
     var currentBD = req.user.user_baby_birthday;
 
-    // console.log(currentBD);
-    // console.log(typeof currentBD);
 
     var start_date = new Date(currentBD); //Create start date object by passing appropiate argument
     var end_date = new Date(); // today
@@ -153,12 +140,10 @@ router.get("/achmtsPlusMinusTwoMos", function(req, res) {  // getting achievemen
     if (total_months < 1) { total_months = 1 }; // starts at one, so that the query will get up to 3 months to start.
 
 
-// console.log((total_months - 2), (total_months + 2));
-
 
   pool.connect(function(err, client, done) {
     if (err) {
-      console.log("Error connecting to database", err);
+      if (verbose) console.log("Error connecting to database", err);
       res.sendStatus(500);
       done(); // returns the connection
     } else {
@@ -170,7 +155,7 @@ router.get("/achmtsPlusMinusTwoMos", function(req, res) {  // getting achievemen
       function(err, result) {
         done();
         if (err) {
-          console.log("Error querying DB", err);
+          if (verbose) console.log("Error querying DB", err);
           res.sendStatus(500);
         } else {
     //     if (verbose) console.log("Got get info from DB", result.rows);
@@ -191,14 +176,14 @@ router.get("/highestCustomAchievementID", function(req, res) {  // getting the h
 
   pool.connect(function(err, client, done) {
     if (err) {
-      console.log("Error connecting to database", err);
+      if (verbose) console.log("Error connecting to database", err);
       res.sendStatus(500);
       done(); // returns the connection
     } else {
       client.query( "SELECT MAX(achievement_id) FROM achievement_data;", function(err, result) {
         done();
         if (err) {
-          console.log("Error querying DB", err);
+          if (verbose) console.log("Error querying DB", err);
           res.sendStatus(500);
         } else {
          if (verbose) console.log("Got get info from DB", result.rows);
@@ -213,7 +198,7 @@ router.get("/highestCustomAchievementID", function(req, res) {  // getting the h
 
 
 router.post('/addCustomAchievement', function(req, res) {
-  console.log('gethere addcustach post', req.body, req.user);
+  if (verbose) console.log('gethere addcustach post', req.body, req.user);
 
   query("INSERT INTO achievement_data (userid, achievement_id, achievement_completed_text, achievement_completed_date, achievement_completed_comment) VALUES ($1, $2, $3, $4, $5)",
   [ req.user.id, req.body.achievement_id, req.body.achievement_completed_text, req.body.achievement_completed_date, req.body.achievement_completed_comment ]
