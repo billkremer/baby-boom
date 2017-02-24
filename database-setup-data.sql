@@ -46,7 +46,7 @@ CREATE TABLE users (
 
 
 
-CREATE TABLE email_history ( -- this could be a large table with the specific info from the individual things put together
+CREATE TABLE email_history (
 	id SERIAL PRIMARY KEY,
 	userid INT,
 
