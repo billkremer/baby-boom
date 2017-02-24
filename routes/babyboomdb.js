@@ -97,7 +97,7 @@ router.get('/showCompleted', function (req, res) {
       res.sendStatus(500);
       done(); // returns the connection
     } else {
-      client.query("SELECT * FROM achievement_data WHERE userid = $1 AND achievement_completed_date < $2 AND achievement_completed_date > ($2::date - '3 month'::interval) ORDER BY achievement_completed_date DESC LIMIT 50;", [req.user.id, start_date],
+      client.query("SELECT * FROM achievement_data WHERE userid = $1 AND achievement_completed_date <= $2 AND achievement_completed_date > ($2::date - '3 month'::interval) ORDER BY achievement_completed_date DESC LIMIT 50;", [req.user.id, start_date],
       function(err, result) {
         done();
         if (err) {
