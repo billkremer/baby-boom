@@ -9,7 +9,7 @@
   <form class="form-horizontal col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 well" ng-submit="register.register()">
   <div id="registerLoginTitle">
     <p>
-      Register  <a  href="/login"><button id="backToLoginButton" class="btn btn-default">back to Login</button></a>
+      Register  <a  href="/login"><button id="backToLoginButton" class="btn btn-info">back to Login</button></a>
     </p>
 
   </div>
@@ -19,6 +19,9 @@
       <div class="col-xs-8">
         <input class="form-control" type="email" ng-model="register.username" required>
       </div>
+      <p class="col-xs-8 col-xs-offset-3">
+        Your emails will be sent to this address.
+      </p>
     </div>
     <div class="form-group row">
       <label class="control-label  col-xs-3">Password:</label>
@@ -28,13 +31,13 @@
     </div>
 
     <div class="form-group row">
-      <label class="control-label col-xs-3">Full Name</label>
+      <label class="control-label col-xs-3">Your Name</label>
       <div class="col-xs-8">
         <input class="form-control" type="text" ng-model="register.userFullName" required>
       </div>
     </div>
     <div class="form-group row">
-      <label class="control-label col-xs-3">Baby's Name</label>
+      <label class="control-label col-xs-3">Your Baby's Name</label>
       <div class="col-xs-8">
         <input class="form-control" type="text" ng-model="register.babyName" required>
       </div>

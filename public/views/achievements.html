@@ -19,7 +19,7 @@
         <li class="active"><a href="/achievementsPage">Milestones <span class="sr-only">(current)</span></a></li>
         <li><a href="/completedPage">Baby's Achievements</a></li>
         <li><a href="/photosPage">Photos</a></li>
-        <li><a href="/buildPDF">Create the Email</a></li>
+        <li><a href="/buildPDF">Create an Email</a></li>
 
       </ul>
 
@@ -39,14 +39,28 @@
 <!-- custom achievement section -->
 <div>
 
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <p>
+         Create a custom Milestone or pick from the classic Milestones.</p>
 
-<textarea  placeholder="Your baby did what?..." type="text" id="customAchievementText" name="customAchievementText" ng-model='achievements.customAchievement.text' ></textarea>
+      </div>
+    </div>
 
-<input type="date" name="customAchievementDate" ng-model="achievements.customAchievement.date" />
+<h2>Add a custom Milestone:</h2>
 
-<textarea  placeholder="with who or what?..." type="text" id="customAchievementComment" name="customAchievementComment" ng-model='achievements.customAchievement.comment' ></textarea>
+  <div class="row">
 
-<button ng-click="achievements.addCustomAchievement(achievements.customAchievement.text,achievements.customAchievement.comment, achievements.customAchievement.date)">Save Custom Achievement</button>
+
+<textarea class="col-xs-4" placeholder="Your baby did what?..." type="text" id="customAchievementText" name="customAchievementText" ng-model='achievements.customAchievement.text' ></textarea>
+
+<textarea class="col-xs-4" placeholder="with who or what?..." type="text" id="customAchievementComment" name="customAchievementComment" ng-model='achievements.customAchievement.comment' ></textarea>
+
+<input class="col-xs-2" type="date" name="customAchievementDate" ng-model="achievements.customAchievement.date" />
+
+<button class="col-xs-2 btn btn-danger" ng-click="achievements.addCustomAchievement(achievements.customAchievement.text,achievements.customAchievement.comment, achievements.customAchievement.date)">Save Custom Achievement</button>
+
+  </div>
 
 </div>
 
@@ -55,18 +69,22 @@
 
 <!-- pre-filled achievement section  -->
 
+<h2>Complete a classic Milestone:</h2>
 
 <div class="achievementDiv" ng-repeat="individualAchievement in achievements.achievementList">
 
+<div class="row">
+  <p class="col-xs-1">{{individualAchievement.achievement_age_months}} months
 
-  <textarea type="text" class="achText" name="achText" class="form-control" ng-model='individualAchievement.achievement_text' > {{individualAchievement.achievement_text}} </textarea>
+  </p>
+  <textarea type="text" class="achText col-xs-4" name="achText" class="form-control" ng-model='individualAchievement.achievement_text' > {{individualAchievement.achievement_text}} </textarea>
 
-  <textarea placeholder = "{{individualAchievement.achievement_placeholder}}" type="text" class="achComm" name="achComm" class="form-control" ng-model='individualAchievement.achievementComment' > {{individualAchievement.achievementComment}} </textarea>
+  <textarea placeholder = "{{individualAchievement.achievement_placeholder}}" type="text" class="achComm col-xs-4" name="achComm" class="form-control" ng-model='individualAchievement.achievementComment' > {{individualAchievement.achievementComment}} </textarea>
 
-<input type="date" name="achievementDate" ng-model="individualAchievement.achievementDate" />
+<input type="date" class="col-xs-2" name="achievementDate"  ng-model="individualAchievement.achievementDate" />
 
-  <button ng-click="achievements.addAchievement(individualAchievement)"> Save Achievement </button>
-
-
+  <button class="col-xs-1 btn btn-info" ng-click="achievements.addAchievement(individualAchievement)">Save</button>
+<br />
+</div>
 </div>
 </div>

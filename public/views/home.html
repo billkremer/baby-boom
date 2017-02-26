@@ -15,64 +15,113 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="mainTitleText active"><a href="/home">Baba Baby Boom <span class="sr-only">(current)</a></li>
-        <li><a href="/achievementsPage">Milestones</span></a></li>
-        <li><a href="/completedPage">Baby's Achievements</a></li>
-        <li><a href="/photosPage">Photos</a></li>
-        <li><a href="/buildPDF">Create the Email</a></li>
+          <li><a href="/achievementsPage">Milestones</span></a></li>
+          <li><a href="/completedPage">Baby's Achievements</a></li>
+          <li><a href="/photosPage">Photos</a></li>
+          <li><a href="/buildPDF">Create an Email</a></li>
 
-      </ul>
+        </ul>
 
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/contactsPage">Contacts</a></li>
-        <li><a href="/profilePage">Profile</a></li>
-        <li><button class="btn btn-info navbar-btn" ng-click="home.logout()" >Logout</button></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
-
-<div class="container">
-
-<h1>Home</h1>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/contactsPage">Contacts</a></li>
+          <li><a href="/profilePage">Profile</a></li>
+          <li><button class="btn btn-info navbar-btn" ng-click="home.logout()" >Logout</button></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
 
 
-<p>
+  <div class="container homePageText">
 
-</p>
-we can start with recording some new achievements
-<p>
-Achievements <a  href="/achievementsPage"><button id="achievementsButton" class="btn btn-default">achievements</button></a>
-</p>
+    <!-- <h1>Baba Baby Boom</h1> -->
 
-we can start saving some new photos
-<p>
-photos <a  href="/photosPage"><button id="photosButton" class="btn btn-default">photo</button></a>
-</p>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+        <p>
+          <span>Baba Baby Boom</span> is your go-to app for communicating to grandparents and other relatives.</p>
+          <p>
+            Keep your family up-to-date with cute pictures and your baby's latest achievements.  There's just four easy steps:
+          </p>
+          <br />
 
-we could check our completed achievements
-<p>
-Achievements <a  href="/completedPage"><button id="completedButton" class="btn btn-default">completed achievements</button></a>
-</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-11 col-md-8 col-md-offset-2">
+          <p>
+            <span>1.</span> Start with the Milestones.  Personalize your baby's milestones and save their achievements!</p>
+          </div>
+          <div class="col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+            <a  href="/achievementsPage"><button id="achievementsButton" class="btn btn-danger">Go to Milestones</button></a>
+            <br />
+            <br />
+          </div>
+
+
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-7 col-md-offset-3">
+            <p>
+              <span>2.</span> Review your baby's Achievements.  Correct any missing or incorrect information and click to Update their info. </p>
+            </div>
+            <div class="col-xs-12 col-sm-11 col-sm-offset-1 col-md-7 col-md-offset-3">
+              <a  href="/completedPage"><button id="completedButton" class="btn btn-warning">Go to Baby's Achievements</button></a>
+              <br />
+              <br />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-9 col-sm-offset-2 col-md-6 col-md-offset-4">
+              <p>
+                <span>3.</span> Everyone loves to see photos of your baby.  Select your picture, add a comment, and click on Upload.  Your photo of your darling baby will be added below! </p>
+              </div>
+              <div class="col-xs-12 col-sm-10 col-sm-offset-2 col-md-6 col-md-offset-4">
+                <a  href="/photosPage"><button id="photosButton" class="btn btn-info">Go to the Photos</button></a>
+                <br />
+                <br />
+
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-8 col-sm-offset-3 col-md-5 col-md-offset-5">
+                <p>
+                  <span>4.</span> We're ready to create an email. Select one to four recent achievments and a photo and click to Send.  That's it! </p>
+                </div>
+                <div class="col-xs-12 col-sm-9 col-sm-offset-3 col-md-5 col-md-offset-5"><a  href="/buildPDF"><button id="profileButton" class="btn btn-success">Go Create an Email</button></a>
 
 
 
-
-we could check our contacts
-<p>
-Contacts <a  href="/contactsPage"><button id="contactButton" class="btn btn-default">contacts</button></a>
-</p>
+                </div>
+              </div>
 
 
-we can review our profile:
+              <br />
+              <br />
 
-<p>
-  Profile <a  href="/profilePage"><button id="profileButton" class="btn btn-default">profile</button></a>
-</p>
 
-we can create the pdf / document:
+              <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
 
-<p>
-  Create PDF <a  href="/buildPDF"><button id="profileButton" class="btn btn-default">buildpdf</button></a>
-</p>
-</div>
+                  <span>Other Tasks:</span>
+                  <p>
+                    Don't forget to make sure everyone is in your Contact list: </p>
+                  </div>
+                  <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                    <a  href="/contactsPage"><button id="contactButton" class="btn btn-primary">Go to Contacts</button></a>
+<br /><br />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                    <p>
+                      If you need to make changes to your Profile:
+                    </p>
+                  </div>
+                  <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                    <a  href="/profilePage"><button id="profileButton" class="btn btn-primary">Go to Profile</button></a>
+
+
+                  </div>
+                </div>
+              </div>

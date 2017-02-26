@@ -18,7 +18,7 @@
         <li><a href="/achievementsPage">Milestones</a></li>
         <li><a href="/completedPage">Baby's Achievements</a></li>
         <li><a href="/photosPage">Photos</a></li>
-        <li class="active"><a href="/buildPDF">Create the Email <span class="sr-only">(current)</span></a></li>
+        <li class="active"><a href="/buildPDF">Create an Email <span class="sr-only">(current)</span></a></li>
 
       </ul>
 
@@ -120,8 +120,8 @@
 </div>
 
 <div id="emailDiv">
-  <button class="text-center btn btn-success" type="button" ng-disabled="((buildpdf.photoChecked < 1) || (buildpdf.achievChecked < 1))" ng-hide="buildpdf.sendingEmail" ng-click="buildpdf.sendEmail()">Click to email!</button>
-  <div id="emailProgresDiv" ng-hide="buildpdf.sendingEmail">
+  <button class="text-center btn btn-success" type="button" ng-disabled="((buildpdf.photoChecked < 1) || (buildpdf.achievChecked < 1))" ng-hide="buildpdf.sendingEmail" ng-click="buildpdf.sendEmail()">Click to SEND!</button>
+  <div id="emailProgresDiv" ng-hide="!buildpdf.sendingEmail">
     <p>Sending the email, please wait...</p>
     <img src="./images/dancing-baby.gif" />
   </div>

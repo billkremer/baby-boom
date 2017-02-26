@@ -18,7 +18,7 @@
         <li><a href="/achievementsPage">Milestones</a></li>
         <li><a href="/completedPage">Baby's Achievements</a></li>
         <li class="active"><a href="/photosPage">Photos <span class="sr-only">(current)</span></a></li>
-        <li><a href="/buildPDF">Create the Email</a></li>
+        <li><a href="/buildPDF">Create an Email</a></li>
 
       </ul>
 
@@ -44,7 +44,7 @@
       <div>
           <button ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" ngf-resize="{width: 800, height: 800}">Select Picture</button>
           <span> {{file.$ngfName}} </span>
-          <img ngf-thumbnail="file || '/images/upload.svg'">
+          <img ngf-thumbnail="file || '/images/upload.svg'" >
       </div>
         <input type="text" ng-model="comment" placeholder="Add comment.. " class="u-full-width" />
         <button type="submit" ng-click="submit()">Upload</button>
@@ -56,8 +56,8 @@
 <form name="form"  >
 
         <div ngf-select type="file" ng-model="photos.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-fix-orientation="true">
-            <button>Select Picture</button>   <span> {{file.$ngfName}} </span> <img ngf-thumbnail="photos.file || '../favicon.ico'"></div>
-    <input type="text" ng-model="photos.comment" placeholder="Add comment.. " />
+            <button>Select Picture</button>   <span> {{photos.file.$ngfName}} </span> <img ngf-thumbnail="photos.file || '../images/babyboom-logo-2.png'" height=30px></div>
+    <input id="photoInputComment" type="text" ng-model="photos.comment" placeholder="Add comment.. " />
     <button type="submit" ng-click="photos.submit()" >Upload</button>
 
 </form>
