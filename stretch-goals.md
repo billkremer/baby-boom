@@ -20,6 +20,7 @@ Flow:
 
 
 need to do
+- [ ] fix login logo
 - [X] navbar
   - [X] Home Page
   - [X] Achievements Page
@@ -40,8 +41,11 @@ need to do
 - [X] send copy to user
 - [x] forward facing demo photo.
 - [x] add ngf-fix-orientation="true" to your picture input button
-- [ ] spinner after email button is pressed.
-- [ ] put name in navbar to let them know they're logged in.
+- [X] spinner after email button is pressed.
+- [-] put name in navbar to let them know they're logged in.
+    * don't they know, based on their data?
+- [X] need to pick at least one  compelted achievement and photo or it breaks
+
 
 
 - [ ] create presentation story
@@ -58,10 +62,17 @@ All Pages
 - [ ] change "xxxPage" to "xxx"
 - [ ] drop shadows
 - [ ] sweet alerts / modals
+- [ ] photos or pictures?
+- [ ] contact form?
 
 Home
 - [ ] basic directions?
-- [ ]
+- [ ] use baby's name in sentences: Go to baby Arlo's Achievements
+- [ ] style list?:
+  1
+    2
+      3
+        4
 
 Achievements
 - [ ] rename undone achievements as milestones.
@@ -95,6 +106,7 @@ User Profile
 - [ ] allow to change userid / email & password
 - [ ] combine profile page and email contacts page
 - [ ] profile page, confirmation message from save.
+- [ ] firstname last name.
 
 
 
