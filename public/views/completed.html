@@ -18,7 +18,7 @@
         <li><a href="/achievementsPage">Milestones</a></li>
         <li class="active"><a href="/completedPage">Baby's Achievements <span class="sr-only">(current)</span></a></li>
         <li><a href="/photosPage">Photos</a></li>
-        <li><a href="/buildPDF">Create the Email</a></li>
+        <li><a href="/buildPDF">Create an Email</a></li>
 
       </ul>
 
@@ -35,18 +35,24 @@
 
 <h1> Completed Achievements </h1>
 
+<p>
+  Review your baby's recent achievements:
+</p>
+
 <!-- completed achievements -->
+
 <div class="completedDiv" ng-repeat="individualCompletedAch in completed.completedList">
 
+<div class="row">
 
-  <textarea type="text" class="achText" name="achText" class="form-control" ng-model='individualCompletedAch.achievement_completed_text' > {{individualAchievement.achievement_completed_text}} </textarea>
+  <textarea type="text" class="achText col-xs-4" name="achText" class="form-control" ng-model='individualCompletedAch.achievement_completed_text' ng-change="completed.achChanged(individualCompletedAch)" ng-disabled="individualCompletedAch.disabledAch"> {{individualAchievement.achievement_completed_text}} </textarea>
 
-  <textarea type="text" class="achComm" name="achComm" class="form-control" ng-model='individualCompletedAch.achievement_completed_comment' > {{individualAchievement.achievement_completed_comment}} </textarea>
+  <textarea type="text" class="achComm col-xs-4" name="achComm" class="form-control" ng-model='individualCompletedAch.achievement_completed_comment' ng-change="completed.achChanged(individualCompletedAch)" ng-disabled="individualCompletedAch.disabledAch"> {{individualAchievement.achievement_completed_comment}} </textarea>
 
-<input type="date" name="achievementDate" ng-model="individualCompletedAch.achievement_completed_date" value="individualCompletedAch.achievement_completed_date" />
+<input type="date" name="achievementDate" class="col-xs-2" ng-model="individualCompletedAch.achievement_completed_date" value="individualCompletedAch.achievement_completed_date" ng-disabled="individualCompletedAch.disabledAch"/>
 
-  <button ng-click="completed.updateCompleted(individualCompletedAch)"> Update Achievement Info </button>
+  <button class="btn btn-success col-xs-2" ng-hide="individualCompletedAch.hideButton" ng-click="completed.updateCompleted(individualCompletedAch)">Save Update</button>
 
-
+</div>
 </div>
 </div>
