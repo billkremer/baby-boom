@@ -45,14 +45,9 @@ CREATE TABLE users (
 );
 
 
-
-CREATE TABLE email_history ( -- this could be a large table with the specific info from the individual things put together
-	id SERIAL PRIMARY KEY,
-	userid INT,
-
-
-
-
-
-
-);
+ -- this table is not implemented, but would be a large table with the specific info from the individual things put together in an email.
+-- CREATE TABLE email_history (
+-- 	id SERIAL PRIMARY KEY,
+-- 	userid INT,
+-- ...
+-- );
