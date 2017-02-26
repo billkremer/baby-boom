@@ -1,90 +1,85 @@
+<div class="container">
 
+  <div class="row">
 
-<div class="row">
-
-<div class="col-xs-12 col-sm-4 text-center" id="bigLogo">
-  <img src="../images/babyboom-logo.png" alt="Baby Boom Logo">
-</div>
-
-
-
-<div class="col-xs-12 col-sm-8 col-md-7 col-md-offset-1">
-
-
-<div class="form-horizontal col-xs-12 col-sm-12 well">
-<div id="registerLoginTitle">
-  <p>
-    Login  <a href="/newUser"><button id="backToLoginButton" class="btn btn-default">Register</button></a>
-  </p>
-
-</div>
-<br />
-
-
-
-
-<div class="col-xs-12 col-sm-8">
-<div class="row">
-
-<form class="form-horizontal col-xs-12 col-sm-12  col-md-12 well" ng-submit="login.login()">
-  <div class="form-group row">
-    <label class="control-label col-xs-3 col-sm-3">Email:</label>
-    <div class="col-xs-9 col-sm-9">
-      <input class="form-control" type="email" ng-model="login.username" required>
+    <div class="col-xs-12 col-sm-4 col-md-4 text-center" id="bigLogo">
+      <img src="../images/babyboom-logo.png" alt="Baby Boom Logo">
     </div>
-  </div>
-  <div class="form-group row">
-    <label class="control-label col-xs-3">Password:</label>
-    <div class="col-xs-9">
-      <input class="form-control" type="password" ng-model="login.password" required>
+
+    <div class="col-xs-12 col-sm-8 col-md-7 col-md-offset-1">
+      <div class="form-horizontal col-xs-12 col-sm-12 well">
+
+        <div id="registerLoginTitle">
+          <p>
+            Login  <a href="/newUser"><button id="backToLoginButton" class="btn btn-primary">Register</button></a>
+          </p>
+
+        </div>
+        <br />
+
+
+        <div class="col-xs-12 col-sm-12">
+          <div class="row">
+
+            <form class="form-horizontal col-xs-12 col-sm-12 col-md-12 well" ng-submit="login.login()">
+              <div class="form-group row">
+                <label class="control-label col-xs-3 col-sm-3">Email:</label>
+                <div class="col-xs-9 col-sm-9">
+                  <input class="form-control" type="email" ng-model="login.username" required>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="control-label col-xs-3">Password:</label>
+                <div class="col-xs-9">
+                  <input class="form-control" type="password" ng-model="login.password" required>
+                </div>
+              </div>
+              <div class="col-xs-offset-3 col-xs-9">
+                <button type="submit" class="btn btn-success" ng-disabled="login.$invalid" >Login</button>
+              </div>
+
+            </form>
+
+
+
+
+
+
+
+
+            <div class='col-xs-12 text-center'  ng-show="login.message">
+              <div class="alert alert-danger" > <a href="#" class="close" data-dismiss="alert">&times;</a>
+                <strong>Uh oh!</strong> {{login.message}}
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="col-xs-offset-3 col-xs-9">
-    <button type="submit" class="btn btn-primary" ng-disabled="login.$invalid" >Login</button>
-  </div>
-
-</form>
 
 
+    <!-- bottom half -->
+
+    <div class="col-xs-12 col-sm-4 col-md-3 col-md-offset-1">
+
+      <div class="loginTextBox">
+        <p>
+          Baby Boom is your go-to app for communicating to grandparents and other relatives.</p>
+          <p>
+            Keep your family up-to-date with pictures and your baby's latest achievements.
+          </p>
+        </div>
+
+      </div>
 
 
+      <div class="col-xs-12 col-sm-8 col-md-8">
+
+        <div class="loginDemoPhotoDiv">
+          <img id="loginDemoPhoto" src="../images/babyboom-demo.png" alt="A picture of the pdf created by the application."/>
+        </div>
 
 
-
-
-<div class='col-xs-12 text-center'  ng-show="login.message">
-  <div class="alert alert-danger" > <a href="#" class="close" data-dismiss="alert">&times;</a>
-    <strong>Uh oh!</strong> {{login.message}}
-  </div>
-</div>
-
-
-</div>
-</div>
-</div>
-</div>
-
-
-<!-- bottom half -->
-
-<div class="col-xs-8">
-
-<div>
-  <p>
-    Baby Boom is your go-to app for communicating to grandparents and other relatives.</p>
-    <p>
-Keep your family up-to-date with pictures and your baby's latest achievements.
-  </p>
-</div>
-
-</div>
-
-
-<div class="col-xs-4">
-
-  <div >
-    <img id="loginDemoPhoto" src="../images/babyboom-demo.png" alt="A picture of the pdf created by the application."/>
-  </div>
-
-
-</div>
+      </div></div>

@@ -14,7 +14,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/home">Baby-Boom!</a></li>
+        <li class="mainTitleText"><a href="/home">Baba Baby Boom</a></li>
         <li><a href="/achievementsPage">Milestones</a></li>
         <li><a href="/completedPage">Baby's Achievements</a></li>
         <li><a href="/photosPage">Photos</a></li>
@@ -25,11 +25,14 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/contactsPage">Contacts</a></li>
         <li class="active"><a href="/profilePage">Profile <span class="sr-only">(current)</span></a></li>
-
+        <li><button class="btn btn-info navbar-btn" ng-click="profile.logout()" >Logout</button></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+
+<div class="container">
 
 <h1>Profile Page</h1>
 
@@ -76,4 +79,5 @@
      </div>
 
   </form>
+</div>
 </div>

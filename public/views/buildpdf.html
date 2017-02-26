@@ -14,7 +14,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/home">Baby-Boom!</a></li>
+        <li class="mainTitleText"><a href="/home">Baba Baby Boom</a></li>
         <li><a href="/achievementsPage">Milestones</a></li>
         <li><a href="/completedPage">Baby's Achievements</a></li>
         <li><a href="/photosPage">Photos</a></li>
@@ -25,12 +25,13 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/contactsPage">Contacts</a></li>
         <li><a href="/profilePage">Profile</a></li>
-
+        <li><button class="btn btn-info navbar-btn" ng-click="buildpdf.logout()" >Logout</button></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
+<div class="container">
 
 <h1>Let's build a Page to send!</h1>
 
@@ -43,7 +44,7 @@
 <!-- recent achievements selector selections -->
 <div class="buildAchievementDiv">
 <p>
-  <span>1.</span> Select on up to four achievements.  Go back to the <a href="/completedPage">Completed Achievements Page</a> to edit the achievements.
+  <span>1.</span> Please select at least one, and up to four achievements.  Go back to the <a href="/completedPage">Completed Achievements Page</a> to edit the achievements.
 </p>
 
 
@@ -91,7 +92,7 @@
 <div class="buildTheBuild">
 
   <p>
-     <span>3.</span> After selecting up to four achievements and a photo, double check to ensure that the setup looks correct below.
+     <span>3.</span> After selecting up to four achievements and a photo, double check to ensure that everything looks correct below.
   </p>
 
 <!-- <div class=>
@@ -114,10 +115,22 @@
 
 
 </div>
+
+
+</div>
+
+<div id="emailDiv">
+  <button class="text-center btn btn-success" type="button" ng-disabled="((buildpdf.photoChecked < 1) || (buildpdf.achievChecked < 1))" ng-hide="buildpdf.sendingEmail" ng-click="buildpdf.sendEmail()">Click to email!</button>
+  <div id="emailProgresDiv" ng-hide="buildpdf.sendingEmail">
+    <p>Sending the email, please wait...</p>
+    <img src="./images/dancing-baby.gif" />
+  </div>
 </div>
 
 
-<button class="text-center btn btn-success" type="button" ng-disabled="((buildpdf.photoChecked == 0) && (buildpdf.achievChecked == 0)) || buildpdf.sendingEmail" ng-click="buildpdf.sendEmail()">Click to email!</button>
 
 
+
+
+</div>
 </div>

@@ -14,7 +14,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/home">Baby-Boom! <span class="sr-only">(current)</a></li>
+        <li class="mainTitleText active"><a href="/home">Baba Baby Boom <span class="sr-only">(current)</a></li>
         <li><a href="/achievementsPage">Milestones</span></a></li>
         <li><a href="/completedPage">Baby's Achievements</a></li>
         <li><a href="/photosPage">Photos</a></li>
@@ -25,15 +25,17 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/contactsPage">Contacts</a></li>
         <li><a href="/profilePage">Profile</a></li>
-
+        <li><button class="btn btn-info navbar-btn" ng-click="home.logout()" >Logout</button></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
+
+<div class="container">
+
 <h1>Home</h1>
 
-<button ng-click="home.logout()" >Logout</button>
 
 <p>
 
@@ -73,3 +75,4 @@ we can create the pdf / document:
 <p>
   Create PDF <a  href="/buildPDF"><button id="profileButton" class="btn btn-default">buildpdf</button></a>
 </p>
+</div>

@@ -14,7 +14,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="/home">Baby-Boom!</a></li>
+        <li class="mainTitleText"><a href="/home">Baba Baby Boom</a></li>
         <li><a href="/achievementsPage">Milestones</a></li>
         <li><a href="/completedPage">Baby's Achievements</a></li>
         <li class="active"><a href="/photosPage">Photos <span class="sr-only">(current)</span></a></li>
@@ -25,26 +25,46 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/contactsPage">Contacts</a></li>
         <li><a href="/profilePage">Profile</a></li>
-
+        <li><button class="btn btn-info navbar-btn" ng-click="photos.logout()" >Logout</button></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
+<div class="container">
+
+
+
 <h1>Photos</h1>
+
+
+
+<!-- <form name="form" id="picForm" >
+    <div>
+      <div>
+          <button ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" ngf-resize="{width: 800, height: 800}">Select Picture</button>
+          <span> {{file.$ngfName}} </span>
+          <img ngf-thumbnail="file || '/images/upload.svg'">
+      </div>
+        <input type="text" ng-model="comment" placeholder="Add comment.. " class="u-full-width" />
+        <button type="submit" ng-click="submit()">Upload</button>
+    </div>
+</form> -->
 
 
 <!-- get pictures -->
 <form name="form"  >
 
-        <div ngf-select type="file" ng-model="photos.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" >
-            <button>Select Picture</button></div>
+        <div ngf-select type="file" ng-model="photos.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-fix-orientation="true">
+            <button>Select Picture</button>   <span> {{file.$ngfName}} </span> <img ngf-thumbnail="photos.file || '../favicon.ico'"></div>
     <input type="text" ng-model="photos.comment" placeholder="Add comment.. " />
     <button type="submit" ng-click="photos.submit()" >Upload</button>
 
 </form>
-
+<br />
 <!-- show pictures -->
+<div class="flex-container">
+
 
 <div class="indivPhoto text-center" ng-repeat="picture in photos.photoList">
 <img ng-src="{{picture.picture_url}}" />
@@ -54,5 +74,7 @@
     </p><p>
       {{picture.picture_originalname}}
     </p>
+</div>
+</div>
 </div>
 </div>
