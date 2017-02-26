@@ -15,7 +15,9 @@ router.post('/', function (req, res) {
   //  if (verbose) console.log('new email',req.body, req.user); // see below
 
     var mailData = req.body;
-    var contactsArray = [];
+    var contactsArray = [req.user.username];
+
+
 
     mailData.contacts.forEach(function (aContact) {
       contactsArray.push('"'+ aContact.contactname +'" <' +aContact.contactemail+'>');
@@ -34,15 +36,15 @@ router.post('/', function (req, res) {
 
     var textEmail = mailData.babyName + " is " + mailData.months + mailData.monthsText + "!\n";
 
-    var htmlEmail = "<h1>" + mailData.babyName +  " </h1>";
+    var htmlEmail = "<div align='center' style='border: 1px solid black;padding:5px 5px; margin: auto auto;'>"
+    htmlEmail += "<h1 align='center'>" + mailData.babyName +  " </h1>";
     htmlEmail += "<h2>" + mailData.months + mailData.monthsText + "</h2>";
-
 
 
     mailData.aches.forEach( function (indivAch) {
       textEmail += indivAch.achievement_completed_date_string + " -- " + indivAch.achievement_completed_text + " -- " + indivAch.achievement_completed_comment;
 
-      htmlEmail += "<p>" + indivAch.achievement_completed_date_string + " -- " + indivAch.achievement_completed_text + " -- " + indivAch.achievement_completed_comment + "</p>";
+      htmlEmail += "<p style='font-size:1.5em;'>" + indivAch.achievement_completed_date_string + " -- " + indivAch.achievement_completed_text + " -- " + indivAch.achievement_completed_comment + "</p>";
     });
 
 

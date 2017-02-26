@@ -159,6 +159,7 @@ router.get("/achmtsPlusMinusTwoMos", function(req, res) {  // getting achievemen
           res.sendStatus(500);
         } else {
     //     if (verbose) console.log("Got get info from DB", result.rows);
+          // result.username = req.user.user_fullname;
           res.send(result.rows);
         };
       });  // closes client query
