@@ -29,8 +29,8 @@ router.post('/', function (req, res) {
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-            user: 'baby.boom.booker@gmail.com', // Your email id
-            pass: 'gasstationtvstory' // Your password
+            user: 'baba.baby.boom@gmail.com', // Your email id
+            pass: 'minneapolisstartinglineupcategory' // Your password
         } // end auth
     }); // end createTransport
 
@@ -51,10 +51,10 @@ router.post('/', function (req, res) {
 
     //set up options
     var mailOptions = {
-      from: "Baby-Boom Booker <baby.boom.booker@gmail.com>", // sender address
+      from: "Baba Baby Boom <baba.baby.boom@gmail.com>", // sender address
       to: contactsArray, //receiver
 
-      subject: 'Update from '+ req.user.user_fullname  + ' via Baby-Boom', //subject line
+      subject: 'Update from '+ req.user.user_fullname  + ' via Baba Baby Boom', //subject line
       text: textEmail, // plain text
       html: htmlEmail, //html
       attachments: [{   // use URL as an attachment
