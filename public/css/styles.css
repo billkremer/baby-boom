@@ -1,7 +1,44 @@
 /* styles */
 
+body {
+  background-color: aliceblue;
+}
+
+.navbar {
+  background-color: #FCFFB9;
+}
+
+.nav.active {
+  background-color: #FFA66B;
+}
+
+.mainTitleText {
+  font-family: 'Milonga', sans-serif;
+  font-size: 1.2em;
+  color: black;
+  /*font-weight: bold;*/
+  /*font-family: 'Milonga', cursive;
+font-family: 'Roboto', sans-serif;*/
+}
+
+#emailDiv {
+  text-align: center;
+}
+
+#emailProgresDiv {
+    width: 100%;
+    font-size: 1.5em;
+      /*border: 4px solid #B3F7FF;*/
+}
+
+#emailProgresDiv img {
+    width: 100%;
+    border: 4px solid #B3F7FF;
+}
+
 #registerLoginTitle {
   border-bottom: 1px solid black;
+  font-size: 1.2em;
 }
 
 #backToLoginButton {
@@ -9,7 +46,7 @@
 }
 
 #bigLogo  {
-  padding: 10px 10px;
+  padding: 18px 10px;
 }
 
 
@@ -22,10 +59,27 @@
   border: 1px solid black;
 }*/
 
-#loginDemoPhoto {
-  max-width: 300px;
-  border: 1px solid black;
+
+.loginTextBox {
+    border: 1px solid black;
+    text-align: center;
+    padding: 5px 5px;
+    font-size: 1.5em;
+    background-color: #FFAB73;
 }
+
+.loginDemoPhotoDiv {
+    text-align: center;
+    margin: 18px 5px;
+}
+
+#loginDemoPhoto {
+  max-width: 400px;
+  border: 1px solid black;
+
+}
+
+
 
 .buildAchievementDiv {
   width: 40%;
@@ -82,7 +136,20 @@
 }
 
 
+.flex-container {
+  padding: 0;
+    margin: 0;
+    list-style: none;
 
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-flex-flow: row wrap;
+    justify-content: space-around;
+}
 
 .indivPhoto {
   border: 1px solid black;
@@ -92,6 +159,7 @@
   margin: 3px 3px;
   border-radius: 3px;
   overflow: hidden;
+  text-align: center;
 }
 
 .indivPhoto img, .builtPdf img {
