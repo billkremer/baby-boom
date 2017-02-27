@@ -147,7 +147,7 @@ router.get("/achmtsPlusMinusTwoMos", function(req, res) {  // getting achievemen
       res.sendStatus(500);
       done(); // returns the connection
     } else {
-      client.query("SELECT achievements.id, achievement_age_months, achievement_text, achievement_placeholder FROM achievements LEFT JOIN (SELECT * FROM achievement_data WHERE (achievement_data.userid = $1 AND achievement_data.achievement_id < 1000000)) AS ache ON achievements.id = ache.achievement_id WHERE (ache.userid IS NULL OR ache.userid <> $1) AND achievement_age_months > $2 AND achievement_age_months < $3 ORDER BY achievement_age_months ASC, achievement_text;", [req.user.id, (total_months - 2), (total_months + 2) ],
+      client.query("SELECT achievements.id, achievement_age_months, achievement_text, achievement_placeholder FROM achievements LEFT JOIN (SELECT * FROM achievement_data WHERE (achievement_data.userid = $1 AND achievement_data.achievement_id < 1000000)) AS ache ON achievements.id = ache.achievement_id WHERE (ache.userid IS NULL OR ache.userid <> $1) AND achievement_age_months > $2 AND achievement_age_months < $3 ORDER BY achievement_age_months ASC, achievement_text;", [req.user.id, (total_months - 2), (total_months + 3) ],
 
 
 // will need to JOIN to make sure the id  isn't in the other table
