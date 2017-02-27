@@ -27,13 +27,13 @@ font-family: 'Roboto', sans-serif;*/
   text-align: center;
 }
 
-#emailProgresDiv {
+#emailProgressDiv {
     width: 100%;
     font-size: 1.5em;
       /*border: 4px solid #B3F7FF;*/
 }
 
-#emailProgresDiv img {
+#emailProgressDiv img {
     width: 100%;
     border: 4px solid #B3F7FF;
 }
@@ -77,7 +77,7 @@ font-family: 'Roboto', sans-serif;*/
 .achievementDiv, .completedDiv {
     /*border: 1px solid black;*/
     border-radius: 3px;
-    margin: 3px 3px;
+    margin: 9px 3px;
 }
 
 
@@ -114,7 +114,7 @@ font-family: 'Roboto', sans-serif;*/
 
 
 
-.buildAchievementDiv {
+/*.buildAchievementDiv {
   width: 40%;
   float: left;
   overflow: hidden;
@@ -129,7 +129,7 @@ font-family: 'Roboto', sans-serif;*/
 .buildTheBuild {
   width: 35%;
   float: right;
-}
+}*/
 
 .buildAchievementDiv > p, .buildPhotoDiv > p, .buildTheBuild > p {
   border: 1px solid black;
@@ -142,15 +142,16 @@ font-family: 'Roboto', sans-serif;*/
   float: left;
   font-size: 200%;
   font-weight: bold;
-  padding: 0px 3px 0px 2px;
+  padding: 0px 3px 6px 2px;
 }
 
 .builtPdf {
   width: 100%;
   border: 1px solid black;
   padding: 2px 2px;
-  margin: 3px 3px;
+  margin: 3px auto;
   border-radius: 3px;
+  background-color: white;
 }
 
 .builtPdf-p {
@@ -161,6 +162,13 @@ font-family: 'Roboto', sans-serif;*/
   font-size: 2em;
   font-weight: bold;
   padding: 2px 2px;
+
+}
+
+.buildpdf-ach-date:disabled, .buildpdf-ach-text:disabled, .buildpdf-ach-comment:disabled {
+  background-color: white;
+  resize: vertical;
+  overflow: visible;
 }
 
 
@@ -189,10 +197,11 @@ font-family: 'Roboto', sans-serif;*/
   width: 200px;
   height: 300px;
   padding: 2px 2px;
-  margin: 3px 3px;
+  margin: 3px auto;
   border-radius: 3px;
   overflow: hidden;
   text-align: center;
+  background-color: white;
 }
 
 .indivPhoto img, .builtPdf img {
