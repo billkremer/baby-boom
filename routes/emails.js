@@ -3,7 +3,7 @@ var verbose = true; // lets messages be turned off for non-error console.logs
 var nodemailer = require("nodemailer");
 var express = require("express");
 var router = express.Router();
-
+var dotenv = require('dotenv').config();
 // probably not necessary...
 // var pool = require("../db/connection");
 //
@@ -30,7 +30,7 @@ router.post('/', function (req, res) {
         service: 'Gmail',
         auth: {
             user: 'baba.baby.boom@gmail.com', // Your email id
-            pass: 'minneapolisstartinglineupcategory' // Your password
+            pass: process.env.GMAIL_PASS // Your password
         } // end auth
     }); // end createTransport
 
