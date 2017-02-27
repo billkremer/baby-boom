@@ -20,7 +20,7 @@ Flow:
 
 
 need to do
-- [ ] fix login logo
+- [X] fix login logo
 - [X] navbar
   - [X] Home Page
   - [X] Achievements Page
@@ -51,10 +51,15 @@ need to do
 - [ ] create presentation story
   - [ ] tech used, user perspective, problem to solve, etc.
   - [ ] review scoping document
-  - [ ] mobile - use phone
-  - [ ] create real email for user.
+  - [-] mobile - use phone
+  - [X] create real email for user.
 
-- [ ] sound when you login?
+Node, Express, Angular and PostgreSQL, Nodemailer to send emails using a GMail email address, and Amazon Web Services WS S3 storage to keep the photos.
+
+Plan to use Heroku to host the site.
+
+
+- [-] sound when you login?
 
 All Pages
 - [ ] is there a logout message?
@@ -64,27 +69,30 @@ All Pages
 - [ ] sweet alerts / modals
 - [ ] photos or pictures?
 - [ ] contact form?
+- [ ] remove console.logs
 
 Home
-- [ ] basic directions?
+- [X] basic directions?
 - [ ] use baby's name in sentences: Go to baby Arlo's Achievements
-- [ ] style list?:
+- [X] style list?:
   1
     2
       3
         4
 
 Achievements
-- [ ] rename undone achievements as milestones.
+- [X] rename undone achievements as milestones.
 - [ ] search achievements
 - [ ] show more achievements
 - [ ] put more achievements in db
+- [X] format for different size screens better
+
 
 Completed Achievements
 - [ ] search achievements
 - [ ] show more achievements
 - [ ] delete completed achievements
-
+- [X] format for different size screens better
 
 Photos Page
 - [ ] delete photos
@@ -107,9 +115,3 @@ User Profile
 - [ ] combine profile page and email contacts page
 - [ ] profile page, confirmation message from save.
 - [ ] firstname last name.
-
-
-
-- [ ]
-
-- [ ]
