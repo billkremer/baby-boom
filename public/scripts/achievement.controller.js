@@ -75,7 +75,7 @@ if (customAchievementDate == undefined) {
 
 ctrl.populateDom = function () {
   $http.get('/bbdb/achmtsPlusMinusTwoMos').then(function(response) {
-  if (verbose)   console.log('here!' , response.data);
+  if (verbose)   console.log('here! in populateDom' , response.data);
     ctrl.achievementList = response.data; // standard achievements
 
   });
