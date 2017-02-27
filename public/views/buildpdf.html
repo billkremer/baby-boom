@@ -33,104 +33,92 @@
 
 <div class="container">
 
-<h1>Let's build a Page to send!</h1>
+  <h1>Let's build a Page to send!</h1>
+  <br />
+
+  <div class="row">
+
+
+    <!-- recent achievements selector selections -->
+    <div class="buildAchievementDiv  col-xs-4">
+      <p>
+        <span>1.</span> Please select at least one, and up to four achievements.  Go back to the <a href="/completedPage">Completed Achievements Page</a> to edit the achievements.
+      </p>
+
+      <div class="achievementDiv" ng-repeat="achievement in buildpdf.achievementList">
+
+        <div class="row">
+
+          <div class='checkbox'>
+
+            <label><input type="checkbox" ng-model="achievement.select" ng-change="buildpdf.checkAchChanged(achievement)" ng-disabled="(buildpdf.achievChecked == buildpdf.achievLimit) && !achievement.select" />Select</label>
+          </div>
+
+          <input type="date" name="achievementDate" class="form-control buildpdf-ach-date" ng-model="achievement.achievement_completed_date" disabled/>
+
+          <textarea type="text" name="achText" class="form-control buildpdf-ach-text" ng-model='achievement.achievement_completed_text' disabled ></textarea>
+
+          <textarea  type="text" name="achComm" class="form-control buildpdf-ach-comment" ng-model='achievement.achievement_completed_comment' disabled  ></textarea>
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- photo selector section -->
+    <div class="buildPhotoDiv col-xs-4">
+      <p>
+        <span>2.</span> Click one photo to use.  Go back to the <a href="/photosPage">Photos Page</a> to edit the photo comments.
+      </p>
+
+      <div class="indivPhoto text-center" ng-repeat="picture in buildpdf.photoList">
+        <img ng-src="{{picture.picture_url}}" />
+        <div>
+          <div class='checkbox'>
+            <label><input class="checkbox" type="checkbox" ng-model="picture.select" ng-change="buildpdf.checkPicChanged(picture)" ng-disabled="(buildpdf.photoChecked == buildpdf.photoLimit) && !picture.select" />Select</label>
+          </div>
+          <p>
+            {{picture.picture_comment}}
+          <br />
+            {{picture.picture_originalname}}
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- create the email -->
+    <div class="buildTheBuild col-xs-4">
+
+      <p>
+        <span>3.</span> After selecting up to four achievements and a photo, double check to ensure that everything looks correct below.
+      </p>
+
+    <div class="builtPdf  text-center " >
+      <p id="buildPdf-title">
+        {{buildpdf.babyName}}<br />
+        {{buildpdf.calculatedMonths}}{{buildpdf.calculatedMonthsText}}
+      </p>
+      <img ng-src={{buildpdf.photoForPdf.picture_url}} />
+      <div>
+        <p class="text-left builtPdf-p" ng-repeat="achieve in buildpdf.achPdfList">
+          {{achieve.achievement_completed_date_string}} -- {{achieve.achievement_completed_text}} -- {{achieve.achievement_completed_comment}}
+        </p>
+      </div>
+    </div>
+
+    <div id="emailDiv">
+      <button class="btn btn-success" type="button" ng-disabled="((buildpdf.photoChecked < 1) || (buildpdf.achievChecked < 1))" ng-hide="buildpdf.sendingEmail" ng-click="buildpdf.sendEmail()">Click to SEND!</button>
+      <div id="emailProgressDiv" ng-hide="!buildpdf.sendingEmail">
+        <p>Sending the email, please wait...</p>
+        <img src="./images/dancing-baby.gif" />
+      </div>
+    </div>
 
 
 
-<div>
 
-</div>
-
-<!-- recent achievements selector selections -->
-<div class="buildAchievementDiv">
-<p>
-  <span>1.</span> Please select at least one, and up to four achievements.  Go back to the <a href="/completedPage">Completed Achievements Page</a> to edit the achievements.
-</p>
-
-
-<div class="achievementDiv" ng-repeat="achievement in buildpdf.achievementList">
-
-<div class='checkbox'>
-
-<label><input type="checkbox" ng-model="achievement.select" ng-change="buildpdf.checkAchChanged(achievement)" ng-disabled="(buildpdf.achievChecked == buildpdf.achievLimit) && !achievement.select" />Select</label>
-</div>
-
-  <input type="date" name="achievementDate" class="form-control buildpdf-ach-date" ng-model="achievement.achievement_completed_date" disabled/>
-
-  <input type="text" name="achText" class="form-control buildpdf-ach-text" ng-model='achievement.achievement_completed_text' disabled />
-
-  <input  type="text" name="achComm" class="form-control buildpdf-ach-comment" ng-model='achievement.achievement_completed_comment' disabled />
 
   </div>
-</div>
-
-<!-- photo selector section -->
-
-<div class="buildPhotoDiv">
-<p>
-   <span>2.</span> Click one photo to use.  Go back to the <a href="/photosPage">Photos Page</a> to edit the photo comments.
-</p>
-
-<div class="indivPhoto text-center" ng-repeat="picture in buildpdf.photoList">
-<img ng-src="{{picture.picture_url}}" />
-<div>
-  <!-- <div class='checkbox'> -->
-
-  <label><input type="checkbox" ng-model="picture.select" ng-change="buildpdf.checkPicChanged(picture)" ng-disabled="(buildpdf.photoChecked == buildpdf.photoLimit) && !picture.select" />
-  </label>
-  <!-- </div> -->
-    <p>
-      {{picture.picture_comment}}
-    </p><p>
-      {{picture.picture_originalname}}
-    </p>
-</div>
-</div>
-</div>
-
-
-<div class="buildTheBuild">
-
-  <p>
-     <span>3.</span> After selecting up to four achievements and a photo, double check to ensure that everything looks correct below.
-  </p>
-
-<!-- <div class=>
-
-</div> -->
-
-
-<div class="builtPdf  text-center" >
-  <p id="buildPdf-title">
-    {{buildpdf.babyName}}<br />
-    {{buildpdf.calculatedMonths}}{{buildpdf.calculatedMonthsText}}
-  </p>
-<img ng-src={{buildpdf.photoForPdf.picture_url}} />
-<div>
-
-    <p class="text-left builtPdf-p" ng-repeat="achieve in buildpdf.achPdfList">
-      {{achieve.achievement_completed_date_string}} -- {{achieve.achievement_completed_text}} -- {{achieve.achievement_completed_comment}}
-    </p>
-
-
-
-</div>
-
-
-</div>
-
-<div id="emailDiv">
-  <button class="text-center btn btn-success" type="button" ng-disabled="((buildpdf.photoChecked < 1) || (buildpdf.achievChecked < 1))" ng-hide="buildpdf.sendingEmail" ng-click="buildpdf.sendEmail()">Click to SEND!</button>
-  <div id="emailProgresDiv" ng-hide="!buildpdf.sendingEmail">
-    <p>Sending the email, please wait...</p>
-    <img src="./images/dancing-baby.gif" />
-  </div>
-</div>
-
-
-
-
-
-
 </div>
 </div>

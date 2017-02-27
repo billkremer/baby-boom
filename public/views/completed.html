@@ -12,7 +12,7 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="mainTitleText"><a href="/home">Baba Baby Boom</a></li>
         <li><a href="/achievementsPage">Milestones</a></li>
@@ -45,13 +45,13 @@
 
 <div class="row">
 
-  <textarea type="text" class="achText col-xs-4" name="achText" class="form-control" ng-model='individualCompletedAch.achievement_completed_text' ng-change="completed.achChanged(individualCompletedAch)" ng-disabled="individualCompletedAch.disabledAch"> {{individualAchievement.achievement_completed_text}} </textarea>
+  <textarea type="text" class="achText col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0 col-md-4 col-md-offset-0" name="achText" class="form-control" ng-model='individualCompletedAch.achievement_completed_text' ng-change="completed.achChanged(individualCompletedAch)" ng-disabled="individualCompletedAch.disabledAch"> {{individualAchievement.achievement_completed_text}} </textarea>
 
-  <textarea type="text" class="achComm col-xs-4" name="achComm" class="form-control" ng-model='individualCompletedAch.achievement_completed_comment' ng-change="completed.achChanged(individualCompletedAch)" ng-disabled="individualCompletedAch.disabledAch"> {{individualAchievement.achievement_completed_comment}} </textarea>
+  <textarea type="text" class="achComm col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0 col-md-4 " name="achComm" class="form-control" ng-model='individualCompletedAch.achievement_completed_comment' ng-change="completed.achChanged(individualCompletedAch)" ng-disabled="individualCompletedAch.disabledAch"> {{individualAchievement.achievement_completed_comment}} </textarea>
 
-<input type="date" name="achievementDate" class="col-xs-2" ng-model="individualCompletedAch.achievement_completed_date" value="individualCompletedAch.achievement_completed_date" ng-disabled="individualCompletedAch.disabledAch"/>
+<input type="date" name="achievementDate" class="col-xs-5 col-xs-offset-1 col-sm-6 col-sm-offset-0 col-md-2" ng-model="individualCompletedAch.achievement_completed_date" value="individualCompletedAch.achievement_completed_date" ng-disabled="individualCompletedAch.disabledAch"/>
 
-  <button class="btn btn-success col-xs-2" ng-hide="individualCompletedAch.hideButton" ng-click="completed.updateCompleted(individualCompletedAch)">Save Update</button>
+  <button class="btn btn-success col-xs-5 col-sm-6 col-sm-offset-0 col-md-2" ng-hide="individualCompletedAch.hideButton" ng-click="completed.updateCompleted(individualCompletedAch)">Save Update</button>
 
 </div>
 </div>

@@ -56,7 +56,7 @@
 <form name="form"  >
 
         <div ngf-select type="file" ng-model="photos.file" name="file" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-fix-orientation="true">
-            <button>Select Picture</button>   <span> {{photos.file.$ngfName}} </span> <img ngf-thumbnail="photos.file || '../images/babyboom-logo-2.png'" height=30px></div>
+            <button>Select Picture to Upload</button>   <span> {{photos.file.$ngfName}} </span> <img ngf-thumbnail="photos.file || '../images/babyboom-logo-2.png'" height=30px></div>
     <input id="photoInputComment" type="text" ng-model="photos.comment" placeholder="Add comment.. " />
     <button type="submit" ng-click="photos.submit()" >Upload</button>
 
