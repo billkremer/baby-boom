@@ -42,17 +42,24 @@ router.post('/', function (req, res) {
 
 
     mailData.aches.forEach( function (indivAch) {
-      textEmail += indivAch.achievement_completed_date_string + " -- " + indivAch.achievement_completed_text + " -- " + indivAch.achievement_completed_comment;
 
-      htmlEmail += "<p style='font-size:1.5em;'>" + indivAch.achievement_completed_date_string + " -- " + indivAch.achievement_completed_text + " -- " + indivAch.achievement_completed_comment + "</p>";
+      var commentString = "";
+
+      if (!(indivAch.achievement_completed_comment == "NULL" || indivAch.achievement_completed_comment == "" || indivAch.achievement_completed_comment == null || indivAch.achievement_completed_comment == "null")) {
+        commentString = " -- " + indivAch.achievement_completed_comment;
+      };
+
+      textEmail += indivAch.achievement_completed_date_string + " -- " + indivAch.achievement_completed_text + commentString;
+
+      htmlEmail += "<p style='font-size:1.5em;'>" + indivAch.achievement_completed_date_string + " -- " + indivAch.achievement_completed_text + commentString + "</p>";
     });
-
 
 
     //set up options
     var mailOptions = {
       from: "Baba Baby Boom <baba.baby.boom@gmail.com>", // sender address
       to: contactsArray, //receiver
+      replyTo: "Baba_Baby_Boom_cannot_reply_to_emails_@_",
 
       subject: 'Update from '+ req.user.user_fullname  + ' via Baba Baby Boom', //subject line
       text: textEmail, // plain text
@@ -79,52 +86,5 @@ router.post('/', function (req, res) {
     }); // end sendMail
 
 }); // end post
-
-
-// new email { id: 5,
-//   babyName: 'Kathy',
-//   months: 1,
-//   monthsText: ' month old',
-//   photo:
-//    { id: 13,
-//      userid: 5,
-//      picture_url: 'https://baby-boom.s3.amazonaws.com/1487862991520user5',
-//      picture_comment: 'another beautiful photo',
-//      picture_originalname: 'P5100002.JPG',
-//      select: true },
-//   aches:
-//    [ { id: 43,
-//        userid: 5,
-//        achievement_id: 1,
-//        achievement_completed_text: 'Begins to smile at people',
-//        achievement_completed_date: '2017-02-21T06:00:00.000Z',
-//        achievement_completed_comment: 'smiled at gradma',
-//        select: true,
-//        achievement_completed_date_string: 'Tue Feb 21 2017' },
-//      { id: 40,
-//        userid: 5,
-//        achievement_id: 1000021,
-//        achievement_completed_text: 'new achievemnets',
-//        achievement_completed_date: '2017-02-20T06:00:00.000Z',
-//        achievement_completed_comment: 'grandpa',
-//        select: true,
-//        achievement_completed_date_string: 'Mon Feb 20 2017' } ],
-//     contacts:
-  //  [ { id: 1,
-  //      userid: 5,
-  //      contactname: 'Bill',
-  //      contactemail: 'bhkremer@hotmail.com' },
-  //    { id: 11,
-  //      userid: 5,
-  //      contactname: 'Bill2',
-  //      contactemail: 'bkrems12@yahoo.com' } ] } anonymous {
-  // id: 5,
-//   username: '4@4',
-//   password: '$2a$10$9xz7IrMbNJNXLhK/p38oQOOagf5WchKd/rzwhM6uXoilg7JjafUnK',
-//   user_baby_name: 'Kathy',
-//   user_baby_birthday: 2017-01-14T06:00:00.000Z,
-//   user_fullname: 'asdf' }
-
-
 
 module.exports = router;
