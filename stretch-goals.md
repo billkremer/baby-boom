@@ -45,7 +45,10 @@ need to do
 - [-] put name in navbar to let them know they're logged in.
     * don't they know, based on their data?
 - [X] need to pick at least one  compelted achievement and photo or it breaks
+- [X] reply-to / reply warning in email.
 
+- [ ] how to  / faq / more specific directions
+- [ ] feedback on pages - photo updated, email being sent...
 
 
 - [ ] create presentation story
@@ -54,7 +57,7 @@ need to do
   - [-] mobile - use phone
   - [X] create real email for user.
 
-Node, Express, Angular and PostgreSQL, Nodemailer to send emails using a GMail email address, and Amazon Web Services WS S3 storage to keep the photos.
+Node, Express, Angular and PostgreSQL, Nodemailer to send emails using a GMail email address, and Amazon Web Services S3 storage to keep the photos.  Boostrap to line everything up and make it responsive.
 
 Plan to use Heroku to host the site.
 
@@ -62,12 +65,12 @@ Plan to use Heroku to host the site.
 - [-] sound when you login?
 
 All Pages
-- [ ] is there a logout message?
-- [ ] change "achievmentsPage" to "achievments" (milestones)
+- [ ] is there a logout message? / confirmation
+- [ ] change "achievementsPage" to "achievements" (milestones)
 - [ ] change "xxxPage" to "xxx"
 - [ ] drop shadows
 - [ ] sweet alerts / modals
-- [ ] photos or pictures?
+- [ ] photos or pictures? - watermark photos on background: picture - see Hue's grayscale css parameter
 - [ ] contact form?
 - [ ] remove console.logs
 
@@ -99,15 +102,17 @@ Photos Page
 - [ ] update photo text
 - [ ] search photos
 - [ ] show more achievements
-- [X] put all divs out like giphy
+- [X] put all divs out like giphy project
 - [ ] drop shadows?
 
 BuildPdf
 - [ ] save pdf/emails as an object for later
-- [ ] remove second "--" if no comment
+- [X] remove second "--" if no comment
 - [X] x months / 1 month old.
 - [X] add photo information
-- [ ] make gmail info private.
+- [X] make gmail info private.
+- [X] create a warning if you don't have enough or have a full number of achievements.
+
 
 User Profile
 - [ ] delete users
