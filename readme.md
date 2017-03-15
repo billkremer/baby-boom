@@ -1,4 +1,4 @@
-#Baba Baby Boom
+# Baba Baby Boom
 is your go-to app for communicating to grandparents and other relatives.
 
 Keep your family up-to-date with cute pictures and your baby's latest achievements.
@@ -7,14 +7,14 @@ Busy parents often have very little time to think about maintaining a baby book 
 
 
 
-###Author:
+### Author:
 Bill Kremer
 
-###Technology Used:
+### Technology Used:
 PostgreSQL, Express, Angular, Node, Nodemailer, Amazon Web Services S3, Bootstrap
 
-###Publication Date:
+### Publication Date:
 February 27, 2017
 
-###URL: (coming soon...)
+### URL: (coming soon...)
 https://baba-baby-boom.herokuapp.com/
